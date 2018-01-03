@@ -1,0 +1,818 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+
+@media(max-width:1800px){
+
+.home_banner_wrapper h2 {
+    font-size: 32px;
+    padding: 8px 5px;
+}
+
+
+.substance_banner_wrapper h2 {
+    font-size: 32px;
+    padding: 8px 5px;
+}
+.quantitative_banner_wrapper h2 {
+    font-size: 32px;
+    padding: 8px 5px;
+}
+
+    .pharmacogenetic_banner_wrapper h2 {
+    font-size: 32px;
+    padding: 8px 5px;
+}
+
+
+    .allergen_banner_wrapper h2 {
+        font-size: 32px;
+        padding: 8px 5px;
+    }
+
+  .essential_banner_wrapper h2 {
+        font-size: 32px;
+        padding: 8px 5px;
+    }
+
+
+    .allergen_bottom_block3 .allergen_bottom_block3_left h2{ font-size: 42px;}
+
+    .allergen_bottom_block3 .allergen_bottom_block3_left h4{ font-size: 30px;}
+
+    .allergen_bottom_block3 .allergen_bottom_block3_left h5{ font-size: 25px;}
+
+    .allergen_bottom_block3 .allergen_bottom_block3_right ul li{ margin: 7px 0;}
+
+
+    .allergen_banner_wrapper h2 {
+        font-size: 32px;
+        padding: 8px 5px;
+    }
+
+
+
+    .essential_banner_wrapper h2 {
+        font-size: 32px;
+        padding: 8px 5px;
+    }
+
+
+
+
+}
+
+
+
+
+@media(max-width:1700px){
+
+    .footer_block_part2 .footer_block2_con2{ float:right; padding:0px!important; width:1380px; margin-top:28px;}
+
+    .footer_block_part2 .footer_block2_con2 ul li a{ font-size:14px;}
+
+    .footer_block_part2 .footer_block2_con3{  text-align:right!important; }
+
+
+    .top_menublock .container{ width: 1600px!important;}
+
+    .footer_block1 .container{ width: 1500px!important;}
+
+    .footer_block2 {padding-right: 0!important;
+        padding-left: 0!important;}
+
+    .footer_block2 .container{width: 98%!important;}
+
+
+
+    .footer_block2 .footer_block2_con2{ float: right;  width: 1366px!important; padding: 45px 0;}
+
+	.top_menublock2 .menublock_wrapper {
+    width: 1420px;
+    padding: 0px;
+}
+.top_menublock2 .menublock_wrapper li{ font-size:14px;}
+
+
+
+    .footer_block2 .footer_block2_con3{ width:100%; float: none; display: block;
+        overflow: hidden; text-align: right; padding:0 5px 25px 5px;}
+
+
+    .home_middle_block{ background: url("../images/home_page_middle_banner.jpg") no-repeat -200px top;}
+
+
+
+    .substance_banner_wrapper h4{font-size: 60px; 	padding: 70px 0 0 0;}
+
+
+    .pharmacogenetic_banner_wrapper h4{ font-size: 50px; padding: 50px 0 0 0;}
+    .pharmacogenetic_banner_wrapper h4 label{ font-size: 26px;}
+
+
+
+    .allergen_banner_wrapper h4{ font-size: 50px; padding: 50px 0 0 0;}
+    .allergen_banner_wrapper h4 label{ font-size: 26px;}
+
+
+  .essential_banner_wrapper h4{ font-size: 50px; padding: 50px 0 0 0;}
+    .essential_banner_wrapper h4 label{ font-size: 26px;}
+
+}
+
+@media(max-width:1600px){
+
+    .essential_block4_banner{ background-position: -20px top;}
+
+    .home_banner_wrapper { background-position: -80px top ;  }
+
+
+    .PRIMARY_div1 img {
+        width: auto;
+        display: block;
+        float: none; max-width: 100%; margin: 0 auto;
+    }
+
+    .PRIMARY_div1_text {
+        width: auto;
+        display: block;
+        float: none; max-width: 100%; text-align: center; padding-top: 30px;
+    }
+
+
+    .allergen_tablediv .allergen_tabledivdiv2 div strong{ font-size: 30px;}
+
+    .allergen_tablediv .allergen_tabledivdiv2 span {
+        display: inline-block;
+        font-size: 14px;
+    }
+}
+
+@media(max-width:1560px){
+
+
+
+    .footer_block_part2 .footer_block2_con2{ float:right; padding:0px!important; width:100%; margin-top:20px!important;   text-align:center;}
+
+    .footer_block_part2 .footer_block2_con2 ul li{ display:inline-block; float:none;}
+
+
+    .footer_block_part2 .footer_block2_con3{  text-align:center!important; padding: 28px 0!important; }
+
+    .footer_block_part2 .footer_block2_con1{ display:block!important; margin:0 auto; float:none; padding-top:28px; padding-bottom:0px;}
+
+    .footer_block_part2 .footer_block2_con2 .nav1{ display:block!important; width:192px; margin:0 auto!important; margin-bottom:15px!important;}
+
+
+
+    .top_menublock .container{ width: 1380px!important;}
+
+    .top_menublock .menublock_wrapper{ width:1174px;  margin: 4px 0 0 0;}
+
+    .top_menublock .menublock_wrapper li a{ font-size: 14px; padding: 10px 5px!important;}
+
+    .footer_block1 .container{ width: 1300px!important;}
+
+    .footer_block2 .container{width: 90%!important;}
+
+
+	.top_menublock2 .menublock_wrapper {
+        width: 100% !important;
+    margin: 4px 0 0 0;
+    }
+
+
+    .top_menublock .menublock_wrapper {
+        width: 100%;
+        float: none;
+        font-size: 16px;
+        color: #444c4f;
+        font-family: 'robotobold';
+        margin: 0 auto;
+        margin-top: 18px;
+        text-align: center;
+    }
+
+    .top_menublock .logodiv {
+        width: 174px;
+        float: none;
+        margin: 0 auto;
+    }
+
+.top_menublock2 .container {
+    width: 100% !important;
+}
+
+    .top_menublock .menublock_wrapper{
+        width: 100% !important; text-align: center!important;
+    }
+    .top_menublock .menublock_wrapper li{ display: inline-block; float: none;}
+    .top_menublock .menublock_wrapper li a {
+        margin: 0 1px;
+        padding: 10px 10px!important;
+        color: #323233;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .SUBSTANCE_div1 .SUBSTANCE_div1_left{ width: 100%; float: none;}
+
+    .SUBSTANCE_div1_right {
+        width: 100%; float: none; margin-top: 25px;
+    }
+
+    .SUBSTANCE_right_wrapper .spagelogo{ display: block; margin:  0 auto; width: auto; max-width: 100%; float: none;}
+
+    .SUBSTANCE_right_wrapper .spageimg1{display: block; margin:  0 auto; width: auto; max-width: 100%; margin-top: 20px; float: none;}
+
+
+    .home_middle_block{ background: url("../images/home_page_middle_banner.jpg") no-repeat -300px top;}
+
+    .home_middle_block .home_middle_block_wrapper{ margin-right: 25px;}
+}
+
+@media(max-width:1500px){
+
+    .allergen_bottom_block1 .allergen_bottom_block1_text{width:700px;}
+
+}
+
+@media(max-width:1480px){
+
+    .home_banner_wrapper { background-position: -170px top ;  }
+
+    .home_banner_wrapper h2 {
+        font-size: 30px;
+        padding: 8px 5px;
+    }
+
+
+    .substance_banner_wrapper h2 {
+        font-size: 30px;
+        padding: 8px 5px;
+    }
+    .quantitative_banner_wrapper h2 {
+        font-size: 30px;
+        padding: 8px 5px;
+    }
+     .pharmacogenetic_banner_wrapper h2 {
+        font-size: 30px;
+        padding: 8px 5px;
+    }
+
+
+    .allergen_banner_wrapper h2 {
+        font-size: 30px;
+        padding: 8px 5px;
+    }
+
+   .essential_banner_wrapper h2 {
+        font-size: 30px;
+        padding: 8px 5px;
+    }
+
+
+
+}
+
+
+
+@media(max-width:1460px){
+
+    .footer_block2 .footer_block2_con2{ float: none;  margin: 0 auto;  padding: 0 0 28px 0;}
+    .footer_block2 .footer_block2_con1{ float: none; margin: 0 auto;}
+
+    .footer_block2 .footer_block2_con3{ width: 100%; padding-top: 28px; text-align: center;}
+
+    .substance_banner_wrapper h4{font-size: 60px; 	padding: 40px 0 0 0; width: 300px;
+        margin:0 0 0 10%; text-align: center; }
+
+    .quantitative_banner_wrapper h4{font-size: 60px; 	padding: 40px 0 0 0; width: 600px;
+        margin:0 0 0 10%; text-align: center; }
+}
+
+@media(max-width:1400px){
+
+    .home_middle_block .home_middle_block_wrapper{ width: 800px;}
+
+    .home_middle_block .home_middle_block_wrapper ul li{ font-size: 18px; line-height: 20px;}
+
+
+    .home_middle_block .home_middle_block_wrapper h2{ font-size: 20px; line-height: 30px;}
+}
+
+@media(max-width:1380px){
+    .top_menublock .container{ width: 100%!important;}
+
+
+    .top_menublock .logodiv{ width: 174px; float: none; margin: 0 auto;}
+    .top_menublock .menublock_wrapper{ width:100%; float: none; font-size: 16px; color: #444c4f; font-family: 'robotobold'; margin: 0 auto; margin-top: 18px; text-align: center;}
+
+    .top_menublock .menublock_wrapper li a{ margin: 0 1px; padding: 10px 10px!important; color: #323233; border-radius: 5px; font-size: 16px; }
+
+    .top_menublock .menublock_wrapper li{ display: inline-block; float: none;}
+
+
+    .footer_block1 .container{ width: 90%!important;}
+
+    .footer_block1 .footer_block1_right{ width: 530px; }
+
+    .footer_block1 .footer_block1_right .footer_block1input{ width: 400px;}
+
+    .footer_block1 .footer_block1_right .footer_block1btn{ width: 125px;}
+
+
+    .top_menublock .menublock_wrapper{ margin-bottom: 12px!important;}
+    .home_banner_wrapper .home_banner_con h4 {
+        font-size: 30px;
+        line-height: 40px;
+    }
+
+    .home_banner_wrapper .home_banner_con h3 {
+        font-size: 50px;
+    }
+
+    .home_banner_wrapper .home_banner_con {
+        width: 655px;
+    }
+    .homebannerlink{ font-size: 18px;}
+
+
+
+
+    .pharmacogenetic_banner_wrapper h4{ width: 490px; text-align: center; margin: 0 0 0 5%; padding: 30px 0 0 0;}
+
+
+    .allergen_banner_wrapper h4{ width: 490px; text-align: center; margin: 0 0 0 5%; padding: 30px 0 0 0;}
+
+    .essential_banner_wrapper h4{ width: 490px; text-align: center; margin: 0 0 0 5%; padding: 30px 0 0 0;}
+
+
+    .allergen_bottom_block5 .allergen_block5_subdiv{ height: 120px; }
+
+    .allergen_bottom_block5 .allergen_block5_subdiv .text_div{ width: 80%;}
+}
+
+
+@media(max-width:1280px){
+.home_block1_text_div .home_block1_text{ width:100%; float:none; padding-right:0; }
+
+.home_block1_text_div .home_img1{ width:auto; float:none; margin:0 auto; max-width:100%; margin-bottom:0px; display:block;}
+
+
+
+
+}
+
+@media(max-width:1260px){
+
+    .footer_block1 .footer_block1_right{ width: 430px; }
+
+    .footer_block1 .footer_block1_right .footer_block1input{ width: 300px;}
+
+
+
+
+
+    .home_form_block h3{ width: 80%; margin: 0 auto;}
+
+    .home_form_block h3 br{ display: none;}
+
+    .form_div1{ width: 991px;}
+    .form_div2{ width: 991px;}
+
+    .form_div1 .form-group{ width: 490px; float: left; margin: 10px 0;}
+    .form_div2 .form-group{ width: 490px; float: left; margin: 10px 0;}
+
+    .form_div1 .form-group .form-control{ width:320px;}
+
+    .form_div1 .form-group label{ width: 170px; font-size: 14px;}
+    .form_div2 .form-group label{ font-size: 14px;}
+}
+
+
+@media(max-width:1199px){
+    .essential_block4 .essential_block4_right{ margin-top: 0px;}
+
+    .demoh2{ display: none;}
+
+
+    .essential_wellness_new_block img{ width: 100%;
+        float: none; margin-bottom: 30px;}
+
+    .essential_wellness_new_block .essential_wellness_text{ width: 100%; float: none;}
+
+    .footer_block1 .footer_block1_left{ width: 100%; float: none; text-align: center; padding: 27px 0 25px 0;}
+    .footer_block1 .footer_block1_right{ width: 430px; float: none; text-align: center; margin: 0 auto; margin-bottom: 27px;}
+
+    .footer_block2 .footer_block2_con2{ width: 100%!important; text-align: center; padding-bottom: 15px;}
+    .footer_block2 .footer_block2_con2 li{ display: inline-block; margin:0 10px 10px 10px!important; float: none!important;}
+
+    .footer_block2 .footer_block2_con3{ width: 100%; padding-top: 0px;}
+
+
+    .nms_div1 h3{ width: 100%!important;}
+
+    .nms_div2{ width:90%; margin:0px auto; }
+
+    .nms_div2 .nms_div2_left{ width:100%; float:none!important; border-right:none; padding:5px 0px; border-bottom:solid 1px #e3e3e3; padding-bottom: 20px;}
+
+    .nms_div2 .nms_div2_right{ width:100%; float:none!important; padding:5px 30px; margin-top: 20px;}
+
+
+    .home_banner_wrapper{ background:#29b0de url("../images/home_banner_img.jpg") no-repeat left top; height: auto;}
+
+    .home_banner_wrapper .home_banner_con{ width: 100%; position: relative; float: none;
+        top:0%;
+        transform: translateY(0%);  text-align: center; padding-right:0px;  padding-top: 515px; padding-bottom: 50px;}
+
+    .home_banner_wrapper .home_banner_con h3{ font-size: 60px; line-height: 70px;  padding-left:10px!important; padding-right: 10px!important;}
+
+
+
+    .home_banner_wrapper .home_banner_con h4{ font-size:40px; line-height: 50px; color: #fff; margin: 0; padding:25px 10px; }
+
+
+    .home_bammer_arrow_img{ display: none;}
+
+
+
+
+    .PRIMARY_div2_list {
+        width: 100%;
+        float: none;
+    }
+
+    .PRIMARY_div2_list ul li{ padding-right: 0px;}
+
+
+    .home_middle_block_mobile{ display:block; width: 100%; border-bottom: solid 4px #f0ff00;}
+
+    .home_middle_block{  background-image: none; background-color: #ccdadf; width: 100%; height:auto;  }
+
+    .home_middle_block .home_middle_block_wrapper{position: relative; float: none;
+        top:0%;
+        transform: translateY(0%); width: 100%; margin-right: 0; padding: 10px; padding-bottom: 15px; }
+
+    .home_middle_block .home_middle_block_wrapper h2{ border: none; text-align: center; padding: 0px; margin: 15px 0;}
+
+
+
+    .substance_banner_wrapper{ height:auto; width: 100%; background-image: none; background-color: #4cd3f2; }
+
+    .substance_banner_mobile{ display: block; width: 100%;}
+
+    .substance_banner_wrapper h4{ width: auto; text-align: center; padding: 15px 15px 18px 15px; margin: 0 auto;}
+
+
+
+    .quantitative_banner_wrapper{ height:auto; width: 100%; background-image: none; background-color: #4cd3f2; }
+
+    .quantitative_banner_mobile{ display: block; width: 100%;}
+
+    .pharmacogenetic_mobile_banner{ display: block; width: 100%;}
+
+
+    .allergen_mobile_banner{ display: block; width: 100%;}
+
+    .essential_wellness_mobilebanner{ display: block; width: 100%;}
+
+    .quantitative_banner_wrapper h4{ width: auto; text-align: center; padding: 15px 15px 18px 15px; margin: 0 auto;}
+
+
+    .pharmacogenetic_banner_wrapper{ height:auto; width: 100%; background-image: none; background-color: #4cd3f2; }
+
+    .pharmacogenetic_banner_wrapper h4{ width: auto; text-align: center; padding: 15px 15px 18px 15px; margin: 0 auto;}
+
+
+
+    .allergen_banner_wrapper{ height:auto; width: 100%; background-image: none; background-color: #4cd3f2; }
+
+    .allergen_banner_wrapper h4{ width: auto; text-align: center; padding: 15px 15px 18px 15px; margin: 0 auto;}
+
+.essential_banner_wrapper{ height:auto; width: 100%; background-image: none; background-color: #4cd3f2; }
+
+    .essential_banner_wrapper h4{ width: auto; text-align: center; padding: 15px 15px 18px 15px; margin: 0 auto;}
+
+
+    .allergen_bottom_block1{ width: 90%; margin: 35px auto;  background-image: none; height: auto; position: relative; background-color: #d2eaf1; }
+
+    .allergen_img1_mobile{ display:block; width: 100%; border-bottom: solid 4px #14a1e2;}
+
+
+    .allergen_bottom_block1 .allergen_bottom_block1_text{top:0%;
+        transform: translateY(0%); position: relative;  width: auto; padding: 15px;}
+
+
+    .allergen_bottom_block2 ul{ width: 100%!important; float: none!important; margin: 0px!important; padding: 0px!important;}
+
+    .allergen_bottom_block2 ul li{ width: 100%!important; float: none!important; margin:10px 0px!important;}
+
+    .allergen_bottom_block2 h2{ padding-bottom: 18px;}
+
+    .allergen_bottom_block2 li span{ display: block!important; margin: 10px 0 0 0!important;}
+
+    .allergen_bottom_block2 .ul7 li:nth-of-type(2){ padding-top: 0px;}
+
+    .allergen_bottom_block3 .allergen_bottom_block3_left{ width: 100%; float: none;}
+    .allergen_bottom_block3 .allergen_bottom_block3_right{ width: 100%; float: none; padding-top: 35px;}
+
+
+    .allergen_bottom_block4 .allergen_bottom_block4_left{ width: 100%; float: none; padding: 0 0 30px 0; }
+    .allergen_bottom_block4 .allergen_bottom_block4_right{ width: 100%; float: none;}
+
+
+
+    .allergen_bottom_block4 .allergen_bottom_block4_left .allergenleft_img4{ width: 100%; float: none; margin: 0 0 25px 0;}
+
+
+    .allergen_block4_left_text{  width: 100%; float: none; padding-left: 0;}
+
+
+    .allergen_bottom_block5 .allergen_block5_subdiv{ height: auto; }
+
+    .allergen_bottom_block5 .allergen_block5_subdiv .text_div{ width: 100%; padding-bottom: 10px;}
+
+    .allergen_bottom_block5 .allergen_block5_subdiv{ width:100%; float: none; padding: 5px 0; margin: 0 2%; height: auto; text-align: center; }
+
+    .allergen_bottom_block5 .allergen_block5_subdiv label{ width: 100%; margin: 0 auto;}
+
+    .allergen_bottom_block5{ padding-bottom: 40px;}
+
+    .allergen_bottom_block6 .allergen_block6_left{ width: 100%; float: none;}
+
+    .allergen_bottom_block6 .allergen_block6_right{ width: 100%; float: none; margin-top: 30px;}
+
+    .allergen_bottom_block6 .allergen_block6_left .block6_left_left{ width: 100%; float: none;}
+
+    .allergen_bottom_block6 .allergen_block6_left .block6_left_right{ width: 100%; float: none;  margin-top: 30px;}
+
+    .allergen_bottom_block6 .allergen_block6_left .block6_left_right{  padding-left: 0px;}
+
+    .essential_block1 .essential_block_left{ width: 100%; float: none;}
+
+    .essential_block1 .essential_block_left .essential_block_left_table td:nth-of-type(1){ width: auto;}
+
+    .essential_block1 .essential_block_right{ width: 100%; float: none; margin-top: 30px;}
+
+    .essential_block1 .essential_block_right ul{ margin: 7px 0; float: none; }
+
+    .essential_block1 .essential_block_right ul:nth-of-type(1){ width: 100%;}
+    .essential_block1 .essential_block_right ul:nth-of-type(2){ width: 100%;}
+
+
+    .essential_block2 .essential_block2_left{ width:100%; float: none; text-align: center;}
+
+    .essential_block2 .essential_block2_right{ width:100%; float: none; padding-top: 20px; text-align: center;}
+
+    .essential_block2 .essential_block2_right img{ width: 45%; margin: 0 1%; float: none;}
+
+
+    .essential_block4 .essential_block4_left{ width: 100%; float: none;}
+    .essential_block4 .essential_block4_right{ width: 100%; float: none; margin-top: 30px;}
+
+    .essential_block5 img{ float: none; margin:0 auto; display: block; max-width: 100%; margin-bottom: 30px;}
+
+
+    .essential_block4_banner{ background-position: right top; height: auto; background-size: 100%; padding-top: 30%;}
+
+    .essential_block4_banner_text{ width:100%; position: inherit;
+        top: 0%;
+        transform: translateY(0%);
+    }
+
+
+}
+
+@media(max-width:991px){
+    .form_div1{ width:90%;}
+
+    .form_div2{ width:90%;}
+
+    .form_div1 .form-group{ width: 100%; float: none; margin: 10px 0;}
+    .form_div2 .form-group{  width: 50%; }
+
+    .form_div1 .form-group label{ display: block; width: 100%; line-height: 25px;}
+
+    .form_div1 .form-group .form-control{ width:100%;}
+
+    .nms_div2 .nms_div2_left{ text-align: center;}
+    .nms_div2 .nms_div2_right{ text-align: center;}
+
+    .nms_div2 ul li{ text-align: left;}
+
+    .nms_div2 .nms_div2_right{ padding: 5px 0;}
+
+    .nms_div2 .nms_div2_right h4{ width: 100%; float: none;}
+
+    .nms_div2 .nms_div2_right img{ display: block; margin: 0 auto; max-width: 100%; margin-top: 30px; float: none;}
+
+
+    .essential_block7{ background: none; height: auto; padding-top: 20px;}
+
+    .essential_block7_img{ display: block; width: 100%;}
+}
+
+@media(max-width:776px){
+    .top_menublock .menublock_wrapper{ width: 100%; background: #ececec;}
+
+    .responsivemenu{ display: inline-block;
+        padding: 13px 0 0 60px;}
+
+    .top_menublock .menublock_wrapper li{ border-bottom: solid 1px #fff;}
+    .top_menublock .menublock_wrapper li a{ padding: 10px 5px; text-align: center;}
+    .top_menublock .menublock_wrapper .navbar-nav{ margin: 0px; width: 100%!important;}
+
+    .navbar-default .navbar-toggle{ border-color: #29aae2;}
+
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: #29aae2;
+    }
+
+    .navbar-default .navbar-collapse, .navbar-default .navbar-form{ width: 100%!important; margin: 0; padding: 0px;}
+
+    .menublock_wrapper .container-fluid{ margin: 0px!important;; padding:0px !important;}
+
+    .top_menublock .menublock_wrapper li{ display: block; float: none;}
+
+    .home_form_block h3{ width: 90%; margin: 0 auto;}
+
+    .home_form_block h1{ font-size: 38px;}
+
+
+	.nav1{ display:none!important;}
+
+
+
+
+
+	.nav2{ background:url(../images/new_menu1.jpg) no-repeat right top!important; padding-right:10px; display:block; width:auto; margin:0 15px; margin-top:15px;}
+
+.nav2 a{ background: #29aae2; color: #fff!important; text-transform:uppercase; font-size:24px; display:block; text-align:center;  border-radius:5px; padding:5px; }
+
+
+	.top_menublock2 .menublock_wrapper li{ margin: 0; padding: 0 0;  list-style: none; background:none;}
+
+	.top_menublock2 .menublock_wrapper{ padding:0 15px;}
+
+
+    .home_banner_wrapper h2 {
+        font-size: 28px;
+        padding: 8px 5px;
+    }
+
+
+    .substance_banner_wrapper h2 {
+        font-size: 28px;
+        padding: 8px 5px;
+    }
+
+    .quantitative_banner_wrapper h2 {
+        font-size: 28px;
+        padding: 8px 5px;
+    }
+
+    .pharmacogenetic_banner_wrapper h2 {
+        font-size: 28px;
+        padding: 8px 5px;
+    }
+
+    .allergen_banner_wrapper h2 {
+        font-size: 28px;
+        padding: 8px 5px;
+    }
+
+    .essential_banner_wrapper h2 {
+        font-size: 28px;
+        padding: 8px 5px;
+    }
+
+    .home_banner_wrapper .home_banner_con h3 {
+        font-size: 50px; line-height: 55px; padding-top: 30px;}
+
+    .home_banner_wrapper .home_banner_con h4 {
+        font-size: 28px;
+        line-height: 44px;}
+
+
+    .home_banner_img2{ display: block; width: 100%;}
+
+    .home_banner_wrapper{ background-image: none;}
+
+    .home_banner_wrapper h2{ width: 100%; border-radius: 0px;}
+    .substance_banner_wrapper h2{ width: 100%; border-radius: 0px;}
+    .quantitative_banner_wrapper h2{ width: 100%; border-radius: 0px;}
+
+    .pharmacogenetic_banner_wrapper h2{ width: 100%; border-radius: 0px;}
+
+    .allergen_banner_wrapper h2{ width: 100%; border-radius: 0px;}
+
+
+    .essential_banner_wrapper h2{ width: 100%; border-radius: 0px;}
+
+
+    .home_banner_wrapper .home_banner_con{ padding-top: 0px;}
+
+    .home_banner_wrapper .home_banner_con .homebannerdevider{ width: 90%;}
+
+    .homebannerlink{ max-width: 90%; font-size: 16px;
+
+        padding: 10px 10px;}
+
+
+    .home_middle_block .home_middle_block_wrapper ul li{ width: 32.3%;}
+}
+
+
+
+
+
+@media(max-width:580px){
+    .footer_block_part2 .footer_block2_con2 ul li{ display:block; float:none; background:none; padding:5px 15px;}
+
+    .footer_block_part2 .footer_block2_con2 .nav1{ padding:0!important;}
+    .footer_block_part2 .footer_block2_con2 .nav1 a{padding: 2px 8px!important;}
+
+    .footer_block1 .footer_block1_right{ width: 100%; float: none; text-align: center; margin: 0 auto; margin-bottom: 27px;}
+
+    .footer_block1 .footer_block1_right .footer_block1input{ width: 100%; float: none; margin: 0 auto;}
+    .footer_block1 .footer_block1_right .footer_block1btn{float: none; margin: 0 auto; margin-top: 10px;}
+
+    .footer_block2 .footer_block2_con2 li{ display: block; float: none;}
+    .form_div2 .form-group{  width: 100%; float: none; margin: 0 0 5px 0px; }
+
+
+	.home_qualify_btn a{ width:auto; height:64px; background: #1faeed; border: none; font-size: 20px; line-height:64px; padding:0 10px; color: #ffffff; text-transform: uppercase; font-family: 'robotoblack'; cursor: pointer; margin: 0px auto; margin-top:23px; display: inline-block;}
+
+	.home_block1 h2{ font-size:36px;}
+	.home_block1 h3{ font-size:20px; line-height:24px;}
+
+
+    .nms_div2 ul{ width: 100%; float: none;}
+    .nms_div2 ul li{ width: 100%; float: none;}
+
+    .nms_div1 h2{ font-size: 30px;}
+
+
+    .substance_banner_wrapper h4{font-size: 45px;}
+
+
+    .allergen_tablediv .allergen_tabledivdiv1{ background-image: none; width: 100%; float: none; padding:10px;  height: auto; text-align: center;}
+
+    .allergen_tablediv .allergen_tabledivdiv2{ width:100%; float: none; height: auto; text-align: center; padding: 10px;}
+
+    .allergen_tablediv{ width: 100%; margin: 20px auto; background: #e7e7e7; height: auto;}
+
+    .allergen_tablediv .allergen_tabledivdiv2 div strong{ font-size: 60px; display: inline-block;  float: none;}
+}
+
+@media(max-width:480px){
+
+    .home_middle_block .home_middle_block_wrapper ul li{ width: 49%;}
+
+
+    .allergen_bottom_block3 .allergen_bottom_block3_left h2 {
+        font-size: 32px;
+    }
+    .allergen_bottom_block3 .allergen_bottom_block3_right h2{
+        font-size: 26px;
+    }
+    .allergen_bottom_block3 .allergen_bottom_block3_left h4 {
+        font-size: 28px;
+    }
+
+    .allergen_bottom_block3 .allergen_bottom_block3_left h5 {
+        font-size: 20px;
+    }
+    .allergen_bottom_block3 .allergen_bottom_block3_left h5 span{ margin-bottom: 5px;}
+
+
+    .allergen_bottom_block4 .allergen_bottom_block4_left h2{ font-size: 30px;}
+
+    .allergen_bottom_block4_right h2{ font-size: 30px;}
+
+    .allergen_block4_left_text h3{ font-size: 28px;}
+
+    .allergen_bottom_block4_right h3{ font-size: 28px;}
+
+    .allergen_bottom_block6 h2{ font-size: 32px;}
+}
+
+
+@media(max-width:400px){
+.allergen_banner_wrapper h4{ font-size: 33px;}
+.essential_banner_wrapper h4{ font-size: 33px;}
+
+
+    .essential_block1 .essential_block_left .essential_block_left_table td{ padding: 8px;}
+
+    .essential_block1 .essential_block_left .essential_block_left_table td label{ font-size: 18px;}
+
+    .essential_block2 .essential_block2_right img{ width: 100%; margin: 5px 0 0 0; float: none;}
+
+
+    .essential_block7 h2{ font-size: 30px;}
+
+    .essential_block7 h3{font-size: 30px;}
+}

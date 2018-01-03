@@ -1,0 +1,77 @@
+<app-adminheader></app-adminheader>
+<app-adminleftsidebar></app-adminleftsidebar>
+<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 dashboard_right">
+  <div class="dashboard_right_wrapper">
+    <div class="dashboard1_div1 ">
+      <h4> Add Blog Management</h4>
+      <div class="dashboard1form">
+
+        <form role="form" novalidate [formGroup]="dataForm" (ngSubmit)="dosubmit(dataForm.value)">
+
+          <label>Title</label>
+          <input type="text" class="form-control" placeholder="Title" [formControl]="dataForm.controls['title']">
+          <span class="has-error" *ngIf ="dataForm.controls['title'].touched && !dataForm.controls['title'].valid">Title is Required !</span>
+
+          <label>Description</label>
+          <textarea [formControl]="dataForm.controls['description']"></textarea>
+         <!-- <ckeditor [formControl]="dataForm.controls['description']"  [config]="{uiColor: '#99000'}" debounce="500"></ckeditor>-->
+          <span class="has-error" *ngIf ="dataForm.controls['description'].touched && !dataForm.controls['description'].valid">Description is Required !</span>
+
+          <label>Blog Category</label>
+          <select name="your-list" id="bloglist" [formControl]="dataForm.controls['bloglist']" >
+            <option value="">Select Blog Category</option>
+            <option *ngFor="let item of blogcategorylist" value="{{item.id}}">{{item.title}}</option>
+          </select>
+          <span class="has-error" *ngIf ="dataForm.controls['bloglist'].touched && !dataForm.controls['bloglist'].valid">Blog Category is Required !</span>
+
+
+          <label>Image</label>
+          <input type="hidden" class="form-control" [formControl]="dataForm.controls['image']">
+          <!-- <span class="has-error" *ngIf ="dataForm.controls['image'].touched && !dataForm.controls['image'].valid">Image is Required !</span>-->
+          <div class="col-md-12">
+            <div class="browsefileblock">
+              <input type="file" accept="image/*" ngFileSelect [options]="basicOptions" (onUpload)="handleUpload($event)">
+              <div *ngIf="progress">
+                Uploading: {{ progress }}%
+              </div>
+              <div *ngIf="uploadedfilesrc" class="browsefileblockimg">
+                <img src="{{uploadedfilesrc}}" >
+                <input type="button" value="Delete" (click)="deleteimage(imagename)">
+              </div>
+            </div>
+          </div>
+
+         <!-- <label>Video</label>
+          <input type="hidden" class="form-control" [formControl]="dataForm.controls['video']">
+          &lt;!&ndash; <span class="has-error" *ngIf ="dataForm.controls['video'].touched && !dataForm.controls['video'].valid">Video is Required !</span>&ndash;&gt;
+          <div class="col-md-12">
+            <div class="browsefileblock">
+              <input type="file" accept="video/*" ngFileSelect [options]="basicOptions1" (onUpload)="handleUpload1($event)">
+              <div *ngIf="progress1">
+                Uploading: {{ progress1 }}%
+              </div>
+              <div *ngIf="uploadedfilesrc1" class="browsefileblockimg">
+                <img src="{{uploadedfilesrc1}}" >
+                <input type="button" value="Delete" (click)="deletevideoe(videoname)">
+              </div>
+            </div>
+          </div>-->
+
+
+          <input type="checkbox" [formControl]="dataForm.controls['status']"><span class="wpcf7-list-item-label">Check the box to Make Active.</span>
+
+          <label>Priority</label>
+          <input type="text" appOnlyNumber="true" class="form-control" placeholder="Priority" [formControl]="dataForm.controls['priority']">
+          <span class="has-error" *ngIf ="dataForm.controls['priority'].touched && !dataForm.controls['priority'].valid">Priority is Required !</span>
+
+
+          <br><input type="submit" value="Save" class="loginbtn2">
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<app-footer></app-footer>-->

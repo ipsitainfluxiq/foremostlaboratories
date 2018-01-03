@@ -1,0 +1,30 @@
+<app-adminheader></app-adminheader>
+<app-adminleftsidebar></app-adminleftsidebar>
+<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 dashboard_right">
+  <div class="dashboard_right_wrapper">
+    <div class="dashboard1_div1 ">
+      <h4> Add Blog Category</h4>
+      <div class="dashboard1form">
+
+        <form role="form" novalidate [formGroup]="dataForm" (ngSubmit)="dosubmit(dataForm.value)">
+
+          <label>Title</label>
+          <input type="text" class="form-control" placeholder="Title" [formControl]="dataForm.controls['title']">
+          <span class="has-error" *ngIf ="dataForm.controls['title'].touched && !dataForm.controls['title'].valid">Title is Required !</span>
+
+          <label>Description</label>
+          <textarea [formControl]="dataForm.controls['description']"></textarea>
+          <span class="has-error" *ngIf ="dataForm.controls['description'].touched && !dataForm.controls['description'].valid">Description is Required !</span>
+          <input type="checkbox" [formControl]="dataForm.controls['status']"><span class="wpcf7-list-item-label">Check the box to Make Active.</span>
+          <br><input type="submit" value="Save" class="loginbtn2">
+        </form>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<app-footer></app-footer>-->
