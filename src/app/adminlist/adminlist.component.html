@@ -33,7 +33,7 @@
             <td>{{item.first_name}} {{item.last_name}}</td>
             <td>{{item.personal_email}}</td>
             <td>{{item.cellphone}}</td>
-            <td><a [routerLink]="['/editadmin',item.id]">Edit</a>
+            <td class="atagsecondchild"><a [routerLink]="['/editadmin',item.id]">Edit</a>
               <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" (click)="delConfirm(item.id)">Delete</a></td>
           </tr>
           </tbody>

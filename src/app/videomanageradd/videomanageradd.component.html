@@ -1,0 +1,47 @@
+<app-adminheader></app-adminheader>
+<app-adminleftsidebar></app-adminleftsidebar>
+<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 dashboard_right">
+  <div class="dashboard_right_wrapper">
+    <div class="dashboard1_div1 ">
+      <h4> Add Video </h4>
+      <div class="dashboard1form">
+
+        <form role="form" novalidate [formGroup]="dataForm" (ngSubmit)="dosubmit(dataForm.value)">
+
+          <label>Title</label>
+          <input type="text" class="form-control" placeholder="Title" [formControl]="dataForm.controls['title']">
+          <span class="has-error" *ngIf ="dataForm.controls['title'].touched && !dataForm.controls['title'].valid">Title is Required !</span>
+
+          <label>Description</label>
+          <textarea [formControl]="dataForm.controls['description']"></textarea>
+          <span class="has-error" *ngIf ="dataForm.controls['description'].touched && !dataForm.controls['description'].valid">Description is Required !</span>
+
+          <label>Video Category</label>
+          <select name="your-list" id="videocategory" [formControl]="dataForm.controls['videocategory']" (click)="checkcategory()">
+            <option value="" disabled>Select Video Category</option>
+            <option value="1">Youtube</option>
+            <option value="2">Vimeo</option>
+          </select>
+          <span class="has-error" *ngIf ="dataForm.controls['videocategory'].touched && !dataForm.controls['videocategory'].valid">Video Category is Required !</span>
+          <div *ngIf="showlinkdiv">
+            <label>Put Link Here</label>
+            <input type="text"  class="form-control" placeholder="Link" [formControl]="dataForm.controls['videolink']" (blur)="videdivopenornot()">
+            <span class="has-error" *ngIf ="dataForm.controls['videolink'].touched && getlink('blank')==true">Link is Required !</span>
+            <span class="has-error" *ngIf ="dataForm.controls['videolink'].touched && getlink('invalid')==true">Link is not valid!</span>
+          </div>
+                                                        <!---For youtube--->
+            <div *ngIf="this.dataForm.value.videocategory==1 && showdivforvideo==1">
+              <iframe width="560" height="315" [attr.src]="videoURL(1)" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+            </div>
+                                                        <!---For vimeo--->
+            <div *ngIf="this.dataForm.value.videocategory==2 && showdivforvideo==1">
+              <iframe [attr.src]="videoURL(2)" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+
+          <br><input type="submit" value="Save" class="loginbtn2">
+        </form>
+        <button (click)="goback()" class="loginbtn2">Back</button>
+      </div>
+    </div>
+  </div>
+</div>

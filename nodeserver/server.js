@@ -8,6 +8,7 @@ var mailer = require("nodemailer");
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
 var randomString = require('random-string');
+var filename=new Array();
 
 app.use(bodyParser.json({ parameterLimit: 10000000,
     limit: '90mb'}));
@@ -21,21 +22,25 @@ emitter.setMaxListeners(0)
 
 var multer  = require('multer');
 var datetimestamp='';
-var filename='';
-var filename1='';
+/*var filename='';
+var filename1='';*/
 var storage = multer.diskStorage({ //multers disk storage settings
     destination: function (req, file, cb) {
         //  cb(null, '../uploads/');
         cb(null, '../src/assets/images/uploads/');
         //  cb(null, '../assets/images/uploads/'); //for server
     },
-    filename: function (req, file, cb) {
+    filename: function (req, file, cb, res) {
         //console.log(cb);
 
-        console.log('file.originalname'+file.originalname);
-        filename=file.originalname.split('.')[0].replace(/ /g,'') + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1];
+      //  console.log('file.originalname'+file.originalname);
+        console.log('file.originalname');
+        console.log(file);
+      //  console.log(req.body);
+        filename.push(file.originalname.split('.')[0].replace(/ /g,'') + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]);
+
         // console.log(filename);
-        cb(null, filename);
+        cb(null, filename[filename.length-1]);
     }
 });
 
@@ -66,10 +71,18 @@ app.post('/uploads', function(req, res) {
             res.json({error_code:1,err_desc:err});
             return;
         }
+        else{
+            res.json(filename[filename.length-1]);
+            setTimeout(function () {
+                console.log('-----');
 
-        res.json(filename);
-
-
+                console.log(filename[filename.length-1]);
+                console.log(filename.length);
+                console.log(filename);
+                filename=[];
+                return;
+            },1000);
+        }
     });
 });
 
@@ -149,6 +162,11 @@ var connection = mysql.createConnection({
     password : 'P@ss0987',
     database : 'influxiq_foremost_laborotaries'
 });
+connection.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+});
+
 app.post('/user_info',function(req,resp) {  // TYPE= 0
 
     var password = randomString({length: 10});
@@ -195,7 +213,10 @@ app.post('/user_info',function(req,resp) {  // TYPE= 0
     };*/
 
 //connection.query('SELECT * from user_info', function(err, rows, fields) {
-    connection.query("INSERT into user_info VALUES (NULL,'"+first_name+"','"+last_name+"','"+personal_email+"','"+password+"','"+secondary_email+"','"+cellphone+"','"+address+"','"+city+"','"+state+"','"+postal_code+"','"+best_time+"','"+healthcare_industry_year+"','"+carrer_change+"','"+doctor_count+"','"+get_started+"','"+additional_info+"','"+background_info+"','"+greatest_attribute+"','"+add_time+"','0','NULL')", function (err, rows, fields) {
+    connection.query("INSERT into user_info VALUES (NULL,'"+first_name+"','"+last_name+"','"+personal_email+"','"+password+"','"+secondary_email+"','"+cellphone+"','"+address+"','"+city+"','"+state+"','"+postal_code+"','"+best_time+"','"+healthcare_industry_year+"','"+carrer_change+"','"+doctor_count+"','"+get_started+"','"+additional_info+"','"+background_info+"','"+greatest_attribute+"','"+add_time+"','0','NULL','1')", function (err, rows, fields) {
+
+        // 0 for type, null for accesscode, 1 for status-active
+
         if (!err) {
             /*----------------------------------mail 1-----------------------------------------------------------------*/
             var smtpTransport = mailer.createTransport({
@@ -291,12 +312,12 @@ app.post('/addadmin',function(req,resp){  //TYPE=1
     var phone = req.body.phone;
     var  type= 1;
     var add_time = req.body.add_time;
-    connection.query("INSERT into user_info VALUES (NULL,'"+first_name+"','"+last_name+"','"+email+"','"+password+"','NULL','"+phone+"','"+address+"','"+city+"','"+state+"','"+zip+"','NULL','NULL','NULL','NULL','NULL','NULL','NULL','NULL','"+add_time+"','"+type+"','NULL')", function (err, rows, fields) {
+    connection.query("INSERT into user_info VALUES (NULL,'"+first_name+"','"+last_name+"','"+email+"','"+password+"','NULL','"+phone+"','"+address+"','"+city+"','"+state+"','"+zip+"','NULL','NULL','NULL','NULL','NULL','NULL','NULL','NULL','"+add_time+"','"+type+"','NULL','NULL')", function (err, rows, fields) {
         if (!err) {
              resp.send(JSON.stringify({'status':'success','id':rows.insertId}));
         }
         else {
-            console.log('Error while performing Query.');
+          //  console.log('Error while performing Query.');
             resp.send(JSON.stringify({'status':'error','id':0}));
         }
     });
@@ -305,16 +326,18 @@ app.post('/addadmin',function(req,resp){  //TYPE=1
 app.post('/login', function (req, resp) {
     var crypto = require('crypto');
     var secret = req.body.password;
-  /*  var hash = crypto.createHmac('sha256', secret)
+    /*  var hash = crypto.createHmac('sha256', secret)
         .update('password')
         .digest('hex');*/
 
     var email=req.body.email;
-  //  console.log("SELECT * FROM user_info WHERE personal_email = '"+email+"'");
+    console.log("SELECT * FROM user_info WHERE personal_email = '"+email+"'");
     connection.query("SELECT * FROM user_info WHERE personal_email = '"+email+"'", function (err, rows, fields) {
-        console.log(err);
+        // console.log(' err-----?wat is going on?');
+        // console.log(err);
+        console.log('rows-- ?wat is going on?');
         console.log(rows);
-        console.log(fields);
+        //  console.log(fields);
 
         if(rows.length==0){
             resp.send(JSON.stringify({'status':'error','msg':'Username invalid...'}));
@@ -338,7 +361,7 @@ app.post('/login', function (req, resp) {
 app.get('/adminlist',function (req,resp) {
     connection.query("SELECT * FROM user_info WHERE type = '1'", function (err, rows, fields) {
         if (err) {
-            console.log(err);
+          //  console.log(err);
             resp.send(JSON.stringify({'res':[]}));
         } else {
             resp.send(JSON.stringify({'res':rows}));
@@ -360,7 +383,7 @@ app.post('/deleteadmin', function (req, resp) {
 });
 
 app.post('/details',function(req,resp){        // this is for editadmin page
-    console.log("details from server.js called");
+   // console.log("details from server.js called");
     var resitem = {};
     var id =req.body._id;
 
@@ -394,6 +417,7 @@ app.post('/editadmin',function(req,resp){
     });
 });
 
+
 app.post('/changepassword', function (req, resp) {
     var secretold = req.body.oldpassword;
     var secretnew = req.body.password;
@@ -407,18 +431,18 @@ app.post('/changepassword', function (req, resp) {
         }
         else {
             connection.query("UPDATE user_info SET password='"+secretnew+"' WHERE id="+logid, function (err, rows1, fields) {
-                console.log(rows);
-                console.log('rows-------------');
+              //  console.log(rows);
+              //  console.log('rows-------------');
                 resp.send(JSON.stringify({'status': 'success', 'msg':rows[0]}));
             });
         }
     });
 });
 app.post('/forgetpassword', function (req, resp) {
-    console.log(req.body.email);
+   // console.log(req.body.email);
     //  collection.find({ email:req.body.email }).toArray(function(err, items) {
     connection.query("SELECT * FROM user_info WHERE personal_email='"+req.body.email+"'", function (err, rows, fields) {
-        console.log(rows);
+       // console.log(rows);
         if(rows.length>0){
             var generatedcode = randomString({length: 25});
             var data = {
@@ -456,8 +480,8 @@ app.post('/forgetpassword', function (req, resp) {
 
 app.post('/accesscodecheck', function (req, resp) {
     var logid = req.body.logid;
-    console.log(logid);
-    console.log(req.body.accesscode);
+  //  console.log(logid);
+  //  console.log(req.body.accesscode);
         connection.query("SELECT * FROM user_info WHERE id='"+logid+"' and accesscode = '"+req.body.accesscode+"'", function (err, rows, fields) {
         if(rows.length>0) {
             resp.send(JSON.stringify({'status': 'success', 'msg': ''}));
@@ -485,21 +509,48 @@ var server = app.listen(port, function () {
 
 /*
 ----------------------------------------------BLOG MANAGER ----------------------------------------------------------*/
+function mysql_real_escape_string (str) {
+    return str.replace(/[\0\x08\x09\x1a\n\r"'\\\%]/g, function (char) {
+        switch (char) {
+            case "\0":
+                return "\\0";
+            case "\x08":
+                return "\\b";
+            case "\x09":
+                return "\\t";
+            case "\x1a":
+                return "\\z";
+            case "\n":
+                return "\\n";
+            case "\r":
+                return "\\r";
+            case "\"":
+            case "'":
+            case "\\":
+            case "%":
+                return "\\"+char; // prepends a backslash to backslash, percent,
+                                  // and double/single quotes
+        }
+    });
+}
 
 app.post('/addblogcategory',function(req,resp){
     var title = req.body.title;
     var description = req.body.description;
     var status = req.body.status;
-
-    connection.query("INSERT into blog_category VALUES (NULL,'"+title+"','"+description+"','"+status+"')", function (err, rows, fields) {
+console.log(description);
+    connection.query("INSERT into blog_category VALUES (NULL,'"+title+"','"+mysql_real_escape_string(description)+"','"+status+"')", function (err, rows, fields) {
         if (!err) {
+            console.log(rows);
             resp.send(JSON.stringify({'status':'success','id':rows.insertId}));
         }
         else {
+            console.log(err);
             resp.send(JSON.stringify({'status':'error','id':0}));
         }
     });
 });
+
 
 app.get('/blogcategorylist',function (req,resp) {
     connection.query("SELECT * FROM blog_category", function (err, rows, fields) {
@@ -562,13 +613,13 @@ app.post('/addblogmanagement',function(req,resp){
     var description = req.body.description;
     var bloglist = req.body.bloglist;
     var image = req.body.image;
-  //  var video = req.body.video;
+    //  var video = req.body.video;
     var status = req.body.status;
     var priority = req.body.priority;
-
-    connection.query("INSERT into blog_management VALUES (NULL,'"+title+"','"+description+"','"+bloglist+"','"+image+"','"+status+"','"+priority+"')", function (err, rows, fields) {
-       console.log(err);
-       console.log(rows);
+    var datetimestamp = Date.now();
+    connection.query("INSERT into blog_management VALUES (NULL,'"+title+"','"+mysql_real_escape_string(description)+"','"+bloglist+"','"+image+"','"+status+"','"+priority+"','"+datetimestamp+"')", function (err, rows, fields) {
+        // console.log(err);
+      // console.log(rows);
         if (!err) {
             resp.send(JSON.stringify({'status':'success','id':rows.insertId}));
         }
@@ -594,16 +645,18 @@ app.post('/deleteblogmanagement', function (req, resp) {
 });
 
 app.get('/blogmanagementlist',function (req,resp) {
-    connection.query("SELECT blog_management.id,blog_management.title,blog_management.description,blog_management.image,blog_management.status,blog_management.priority,blog_category.title as cat_title FROM blog_category INNER JOIN blog_management ON blog_management.bloglist=blog_category.id", function (err, rows, fields) {
+    connection.query("SELECT blog_management.id,blog_management.title,blog_management.description,blog_management.image,blog_management.status,blog_management.priority,blog_management.datetimestamp,blog_category.title as cat_title FROM blog_category INNER JOIN blog_management ON blog_management.bloglist=blog_category.id", function (err, rows, fields) {
         if (err) {
-             console.log(err);
+          //   console.log(err);
             resp.send(JSON.stringify({'res':[]}));
         } else {
-            console.log(rows);
+          //  console.log(rows);
             resp.send(JSON.stringify({'res':rows}));
         }
     });
 });
+
+
 
 app.post('/blogmanagementdetails',function(req,resp){
     var resitem = {};
@@ -635,8 +688,9 @@ app.post('/editblogmanagement',function(req,resp){
     var status = req.body.status;
     var priority = req.body.priority;
     var id = req.body.id;
+    var datetimestamp = Date.now();
 
-    connection.query("UPDATE blog_management SET title='"+title+"',description='"+description+"',image='"+image+"',bloglist='"+bloglist+"',status='"+status+"',priority='"+priority+"' WHERE id="+id, function (err, rows, fields) {
+    connection.query("UPDATE blog_management SET title='"+title+"',description='"+mysql_real_escape_string(description)+"',image='"+image+"',bloglist='"+bloglist+"',status='"+status+"',priority='"+priority+"',datetimestamp='"+datetimestamp+"' WHERE id="+id, function (err, rows, fields) {
         if (err) {
             resp.send(JSON.stringify({'status':'error'}));
         } else {
@@ -647,7 +701,7 @@ app.post('/editblogmanagement',function(req,resp){
 });
 
 app.post('/deleteimage', function (req, resp) {
-    console.log(req.body.image);
+  //  console.log(req.body.image);
     if (req.body.id != ''){
         var o_id = req.body.id;
         var collection = db.collection('blog_management');
@@ -663,8 +717,535 @@ app.post('/deleteimage', function (req, resp) {
     // var filePath = "/home/influxiq/public_html/projects/mzsadie/uploads/" +req.body.image;
     var filePath = req.body.image; // Path set //
     //   var filePath = "../assets/images/uploads/" +req.body.image; // Path set //
-    console.log('filepath is  ' +filePath);
+   // console.log('filepath is  ' +filePath);
     fs.unlinkSync(filePath);
     resp.send(JSON.stringify({'status': 'success', 'msg': ''}));
+
+});
+
+
+
+/*---------------------------------------------------------ADD_VIdeo_MANAGER------------------------------------------------------------*/
+
+app.post('/videomanagerdetails',function(req,resp){
+    var resitem = {};
+    var blogmanagementid =req.body.blogmanagementid;
+
+    connection.query("SELECT * FROM video_management WHERE blogmanagementid="+blogmanagementid, function (err, rows, fields) {
+        if (err) {
+            resp.send(JSON.stringify({'status':'error','id':0}));
+        } else {
+            resitem = rows;
+            resp.send(JSON.stringify({'status':'success','item':resitem}));
+        }
+    });
+});
+
+app.post('/addvideomanager',function(req,resp){
+    console.log('call');
+    var title = req.body.title;
+    var description = req.body.description;
+    var videocategory = req.body.videocategory;
+    var videolink = req.body.videolink;
+    var blogmanagementid = req.body.blogmanagementid;
+
+    connection.query("INSERT into video_management VALUES (NULL,'"+title+"','"+mysql_real_escape_string(description)+"','"+videocategory+"','"+videolink+"','"+blogmanagementid+"')", function (err, rows, fields) {
+        if (!err) {
+            resp.send(JSON.stringify({'status':'success','id':rows.insertId}));
+        }
+        else {
+            resp.send(JSON.stringify({'status':'error','id':0}));
+        }
+    });
+});
+
+app.post('/deletevideomanager', function (req, resp) {
+    var id = req.body.id;
+    connection.query(" DELETE FROM video_management WHERE id="+id, function (err, rows, fields) {
+        if (err){
+            resp.send("failed");
+            throw err;
+        }
+        else {
+            resp.send("success");
+        }
+    });
+});
+
+
+app.post('/videomanagerdetailsofparticularvalue',function(req,resp){
+    var resitem = {};
+    var id =req.body.id;
+  //  console.log("SELECT * FROM video_management WHERE id="+id);
+    connection.query("SELECT * FROM video_management WHERE id="+id, function (err, rows, fields) {
+        if (err) {
+            resp.send(JSON.stringify({'status':'error','id':0}));
+        } else {
+            resitem = rows[0];
+            resp.send(JSON.stringify({'status':'success','item':resitem}));
+        }
+    });
+});
+
+app.post('/editvideomanager',function(req,resp){
+  //  console.log('call edit video manager');
+    var title = req.body.title;
+    var description = req.body.description;
+    var videocategory = req.body.videocategory;
+    var videolink = req.body.videolink;
+
+    connection.query("UPDATE video_management SET title='"+title+"',description='"+description+"',videocategory='"+videocategory+"',videolink='"+videolink+"' WHERE id="+req.body.id, function (err, rows, fields) {
+        if (err) {
+            resp.send(JSON.stringify({'status':'error'}));
+        } else {
+            resitem = rows[0];
+            resp.send(JSON.stringify({'status':'success'}));
+        }
+    });
+});
+
+/*----------------------------------------------------doctor manager--------------------------------------------------------*/
+
+app.post('/doctoradd',function(req,resp){
+    connection.query("INSERT into doctor_management VALUES (NULL,'"+req.body.firstname+"','"+req.body.lastname+"','"+req.body.officemanager+"','"+req.body.name_practice+"','"+req.body.email+"','"+req.body.phone+"','"+req.body.cellphone+"','"+req.body.officenumber+"','"+req.body.address+"','"+req.body.address2+"','"+req.body.city+"','"+req.body.state+"','"+req.body.zip+"','"+req.body.contacttime+"','"+req.body.timezone+"','"+req.body.firstcontact+"','"+req.body.marketingmaterials+"','"+req.body.datepractice+"','"+req.body.ownerid+"')", function (err, rows, fields) {
+        if (!err) {
+            resp.send(JSON.stringify({'status':'success','id':rows.insertId}));
+        }
+        else {
+            resp.send(JSON.stringify({'status':'error','id':0}));
+        }
+    });
+});
+
+app.post('/doctoraddnote',function(req,resp){
+    connection.query("INSERT into doctor_notes VALUES (NULL,'"+req.body.docid+"','"+req.body.note+"','"+req.body.timestamp+"','"+req.body.ownerid+"')", function (err, rows, fields) {
+        if (!err) {
+            resp.send(JSON.stringify({'status':'success','id':rows.insertId}));
+        }
+        else {
+            resp.send(JSON.stringify({'status':'error','id':0}));
+        }
+    });
+});
+
+app.post('/doctorlist',function (req,resp) {
+    var ownerid = req.body.ownerid;
+    var usertype = req.body.usertype;
+
+    if(usertype == 1) { //admin can see all deoctorlist
+       // var doquery="SELECT * FROM doctor_management";
+      //  var doquery = "SELECT * FROM doctor_management LEFT JOIN user_info on doctor_management.ownerid = user_info.id";
+        var doquery = "SELECT * FROM user_info RIGHT JOIN doctor_management on doctor_management.ownerid = user_info.id";
+    }
+    if(usertype == 0) { //representative can see only their deoctorlist
+       // var doquery = "SELECT * FROM doctor_management where ownerid=" + ownerid;
+     //   var doquery = "SELECT * FROM doctor_management LEFT JOIN user_info on doctor_management.ownerid = user_info.id where ownerid=" + ownerid;
+        var doquery = "SELECT * FROM user_info RIGHT JOIN doctor_management on doctor_management.ownerid = user_info.id where ownerid=" + ownerid;
+    }
+
+        connection.query(doquery, function (err, rows, fields) {
+            if (err) {
+                resp.send(JSON.stringify({'res':[]}));
+            } else {
+                resp.send(JSON.stringify({'res':rows}));
+            }
+        });
+});
+
+app.post('/doctornote',function (req,resp) {
+    var ownerid =req.body.ownerid;
+    var docid =req.body.docid;
+    var usertype = req.body.usertype;
+
+  //  console.log("SELECT * FROM doctor_notes where owner_id=" + ownerid + "and doctor_id=" + docid);
+  //  console.log("SELECT * FROM doctor_notes LEFT JOIN user_info on doctor_notes.owner_id = user_info.id");
+/*    SELECT * FROM member m1
+    JOIN card c1 ON c1.member = m1.id
+    WHERE m1.id IN (
+        SELECT DISTINCT m.id from member m
+    JOIN card c ON c.member = m.id
+    WHERE (c.LastModifiedDate >=sinceDate  OR m.LastModifiedDate >= sinceDate))*/
+   // if(usertype == 1) {
+        var doquery="SELECT * FROM doctor_notes LEFT JOIN user_info on doctor_notes.owner_id = user_info.id where doctor_id=" + docid;
+ //   }
+ /*   if(usertype == 0) {
+        var doquery = "SELECT * FROM doctor_notes LEFT JOIN user_info on doctor_notes.owner_id = user_info.id where owner_id=" + ownerid + " and doctor_id=" + docid;
+    }*/
+    console.log(doquery);
+    connection.query(doquery, function (err, rows, fields) {
+        if (err) {
+            // console.log(err);
+            resp.send(JSON.stringify({'res':[]}));
+        } else {
+           // console.log(rows);
+            resp.send(JSON.stringify({'res':rows}));
+        }
+    });
+});
+
+app.post('/doctordetails',function(req,resp){
+    var resitem = {};
+    var id =req.body.id;
+    connection.query("Select * from doctor_management where id="+id, function (err, rows, fields) {
+        if (err) {
+            resp.send(JSON.stringify({'status':'error','id':0}));
+        } else {
+            resitem = rows[0];
+            resp.send(JSON.stringify({'status':'success','item':resitem}));
+        }
+    });
+});
+
+app.post('/doctoredit',function(req,resp){
+console.log('call');
+    connection.query("UPDATE doctor_management SET officemanager='"+req.body.officemanager+"',name_practice='"+req.body.name_practice+"',cellphone='"+req.body.cellphone+"',officenumber='"+req.body.officenumber+"',address='"+req.body.address+"',address2='"+req.body.address2+"',city='"+req.body.city+"',state='"+req.body.state+"',zip='"+req.body.zip+"',contacttime='"+req.body.contacttime+"',timezone='"+req.body.timezone+"',firstcontact='"+req.body.firstcontact+"',marketingmaterials='"+req.body.marketingmaterials+"',datepractice='"+req.body.datepractice+"' WHERE id="+req.body.id, function (err, rows, fields) {
+      //  console.log(req.body.datepractice);
+        if (err) {
+            resp.send(JSON.stringify({'status':'error'}));
+        } else {
+            resitem = rows[0];
+            resp.send(JSON.stringify({'status':'success'}));
+        }
+    });
+});
+
+app.get('/representativelist',function (req,resp) {
+    connection.query("SELECT * FROM user_info WHERE type = '0'", function (err, rows, fields) {
+        if (err) {
+            //  console.log(err);
+            resp.send(JSON.stringify({'res':[]}));
+        } else {
+            resp.send(JSON.stringify({'res':rows}));
+        }
+    });
+});
+
+app.post('/changestatus',function(req,resp){
+    var status = req.body.status;
+    var id = req.body.id;
+
+    connection.query("UPDATE user_info SET status='"+status+"' WHERE id="+id, function (err, rows, fields) {
+        if (err) {
+            resp.send(JSON.stringify({'status':'error'}));
+        } else {
+            resp.send(JSON.stringify({'status':'success'}));
+        }
+    });
+});
+
+app.post('/addwelcomemessage',function(req,resp){  // Add = 1  ,   Update = 2
+    var admin_id = req.body.owner_id;
+    var  welcome_message= req.body.welcome_message;
+    var  type = req.body.type;
+    if(type ==1){
+        var doquery = "INSERT into welcome_message VALUES (NULL,'"+welcome_message+"','"+admin_id+"')";
+    }
+    if(type ==2){
+        var doquery = "UPDATE welcome_message SET message='"+welcome_message+"'";
+    }
+    /*connection.query("INSERT into welcome_message VALUES (NULL,'"+welcome_message+"','"+admin_id+"')", function (err, rows, fields) { */
+        connection.query(doquery, function (err, rows, fields) {
+        if (!err) {
+           // console.log(rows);
+            resp.send(JSON.stringify({'status':'success','id':rows}));
+        }
+        else {
+            resp.send(JSON.stringify({'status':'error','id':0}));
+        }
+    });
+});
+
+app.get('/getwelcomemessage',function (req,resp) {
+    connection.query("SELECT * FROM welcome_message", function (err, rows, fields) {
+        if (err) {
+            resp.send(JSON.stringify({'status':'error','res':[]}));
+        } else {
+           // console.log(rows[0]);
+            resp.send(JSON.stringify({'status':'success','res':rows[0]}));
+        }
+    });
+});
+
+app.post('/getblogmanagement',function (req,resp) {
+    var id =req.body.id;
+    connection.query("SELECT * FROM blog_management where id=" + id, function (err, rows, fields) {
+        if (err) {
+            resp.send(JSON.stringify({'status':'error','res':[]}));
+        } else {
+           // console.log(rows[0]);
+            resp.send(JSON.stringify({'status':'success','res':rows[0]}));
+        }
+    });
+});
+app.post('/getvideomanagement',function (req,resp) {
+    var blogmanagementid =req.body.id;
+    connection.query("SELECT * FROM video_management where blogmanagementid=" + blogmanagementid, function (err, rows, fields) {
+        if (err) {
+            resp.send(JSON.stringify({'status':'error','res':[]}));
+        } else {
+           // console.log(rows[0]);
+            resp.send(JSON.stringify({'status':'success','res':rows}));
+        }
+    });
+});
+
+app.post('/blogmanagement_videomanagement_list',function (req,resp) {
+
+    var id =req.body.id;
+    connection.query("SELECT blog_management.id,blog_management.title,blog_management.description,blog_management.image,blog_management.status,blog_management.priority,blog_management.datetimestamp,video_management.title as video_management_title,video_management.description as video_management_description,video_management.videocategory as video_management_videocategory,video_management.videolink as video_management_videolink FROM video_management INNER JOIN blog_management ON blog_management.id=video_management.blogmanagementid where video_management.blogmanagementid=" + id, function (err, rows, fields) {
+        if (err) {
+            //   console.log(err);
+            resp.send(JSON.stringify({'res':[]}));
+        } else {
+            //  console.log(rows);
+            resp.send(JSON.stringify({'res':rows}));
+        }
+    });
+});
+
+
+app.get('/getusastates',function (req,resp) {
+
+
+    var usastates=[
+        {
+            "name": "Alabama",
+            "abbreviation": "AL"
+        },
+        {
+            "name": "Alaska",
+            "abbreviation": "AK"
+        },
+        {
+            "name": "American Samoa",
+            "abbreviation": "AS"
+        },
+        {
+            "name": "Arizona",
+            "abbreviation": "AZ"
+        },
+        {
+            "name": "Arkansas",
+            "abbreviation": "AR"
+        },
+        {
+            "name": "California",
+            "abbreviation": "CA"
+        },
+        {
+            "name": "Colorado",
+            "abbreviation": "CO"
+        },
+        {
+            "name": "Connecticut",
+            "abbreviation": "CT"
+        },
+        {
+            "name": "Delaware",
+            "abbreviation": "DE"
+        },
+        {
+            "name": "District Of Columbia",
+            "abbreviation": "DC"
+        },
+        {
+            "name": "Federated States Of Micronesia",
+            "abbreviation": "FM"
+        },
+        {
+            "name": "Florida",
+            "abbreviation": "FL"
+        },
+        {
+            "name": "Georgia",
+            "abbreviation": "GA"
+        },
+        {
+            "name": "Guam",
+            "abbreviation": "GU"
+        },
+        {
+            "name": "Hawaii",
+            "abbreviation": "HI"
+        },
+        {
+            "name": "Idaho",
+            "abbreviation": "ID"
+        },
+        {
+            "name": "Illinois",
+            "abbreviation": "IL"
+        },
+        {
+            "name": "Indiana",
+            "abbreviation": "IN"
+        },
+        {
+            "name": "Iowa",
+            "abbreviation": "IA"
+        },
+        {
+            "name": "Kansas",
+            "abbreviation": "KS"
+        },
+        {
+            "name": "Kentucky",
+            "abbreviation": "KY"
+        },
+        {
+            "name": "Louisiana",
+            "abbreviation": "LA"
+        },
+        {
+            "name": "Maine",
+            "abbreviation": "ME"
+        },
+        {
+            "name": "Marshall Islands",
+            "abbreviation": "MH"
+        },
+        {
+            "name": "Maryland",
+            "abbreviation": "MD"
+        },
+        {
+            "name": "Massachusetts",
+            "abbreviation": "MA"
+        },
+        {
+            "name": "Michigan",
+            "abbreviation": "MI"
+        },
+        {
+            "name": "Minnesota",
+            "abbreviation": "MN"
+        },
+        {
+            "name": "Mississippi",
+            "abbreviation": "MS"
+        },
+        {
+            "name": "Missouri",
+            "abbreviation": "MO"
+        },
+        {
+            "name": "Montana",
+            "abbreviation": "MT"
+        },
+        {
+            "name": "Nebraska",
+            "abbreviation": "NE"
+        },
+        {
+            "name": "Nevada",
+            "abbreviation": "NV"
+        },
+        {
+            "name": "New Hampshire",
+            "abbreviation": "NH"
+        },
+        {
+            "name": "New Jersey",
+            "abbreviation": "NJ"
+        },
+        {
+            "name": "New Mexico",
+            "abbreviation": "NM"
+        },
+        {
+            "name": "New York",
+            "abbreviation": "NY"
+        },
+        {
+            "name": "North Carolina",
+            "abbreviation": "NC"
+        },
+        {
+            "name": "North Dakota",
+            "abbreviation": "ND"
+        },
+        {
+            "name": "Northern Mariana Islands",
+            "abbreviation": "MP"
+        },
+        {
+            "name": "Ohio",
+            "abbreviation": "OH"
+        },
+        {
+            "name": "Oklahoma",
+            "abbreviation": "OK"
+        },
+        {
+            "name": "Oregon",
+            "abbreviation": "OR"
+        },
+        {
+            "name": "Palau",
+            "abbreviation": "PW"
+        },
+        {
+            "name": "Pennsylvania",
+            "abbreviation": "PA"
+        },
+        {
+            "name": "Puerto Rico",
+            "abbreviation": "PR"
+        },
+        {
+            "name": "Rhode Island",
+            "abbreviation": "RI"
+        },
+        {
+            "name": "South Carolina",
+            "abbreviation": "SC"
+        },
+        {
+            "name": "South Dakota",
+            "abbreviation": "SD"
+        },
+        {
+            "name": "Tennessee",
+            "abbreviation": "TN"
+        },
+        {
+            "name": "Texas",
+            "abbreviation": "TX"
+        },
+        {
+            "name": "Utah",
+            "abbreviation": "UT"
+        },
+        {
+            "name": "Vermont",
+            "abbreviation": "VT"
+        },
+        {
+            "name": "Virgin Islands",
+            "abbreviation": "VI"
+        },
+        {
+            "name": "Virginia",
+            "abbreviation": "VA"
+        },
+        {
+            "name": "Washington",
+            "abbreviation": "WA"
+        },
+        {
+            "name": "West Virginia",
+            "abbreviation": "WV"
+        },
+        {
+            "name": "Wisconsin",
+            "abbreviation": "WI"
+        },
+        {
+            "name": "Wyoming",
+            "abbreviation": "WY"
+        }
+    ];
+
+    resp.send(usastates);
 
 });

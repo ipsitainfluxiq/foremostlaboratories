@@ -34,7 +34,7 @@
             <td>{{item.description}}</td>
             <td *ngIf="item.status == true">True</td>
             <td *ngIf="item.status == false">False</td>
-            <td><a [routerLink]="['/blogcategoryedit',item.id]">Edit</a>
+            <td class="atagsecondchild"><a [routerLink]="['/blogcategoryedit',item.id]">Edit</a>
               <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" (click)="delConfirm(item.id)">Delete</a></td>
           </tr>
           </tbody>

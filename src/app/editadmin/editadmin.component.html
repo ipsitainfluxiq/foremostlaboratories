@@ -40,7 +40,8 @@
           <span *ngIf ="dataForm.controls['phone'].touched && !dataForm.controls['phone'].valid">Give the phone number correctly !</span>
 
 
-          <br><input type="submit" value="Save" class="loginbtn2">
+          <br><input type="submit" value="Update" class="loginbtn2 cancel">
+          <button type="button" [routerLink]="['/adminlist']" class="loginbtn2 cancel">Cancel</button>
         </form>
 
 

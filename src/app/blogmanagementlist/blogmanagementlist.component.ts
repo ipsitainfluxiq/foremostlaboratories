@@ -26,6 +26,7 @@ export class BlogmanagementlistComponent implements OnInit {
     public showrows;
     public list_length;
 
+
     constructor(fb: FormBuilder, private _http: Http, private router: Router, private _commonservices: Commonservices) {
         this.fb = fb;
         this.orderbyquery = 'title';
@@ -152,5 +153,22 @@ export class BlogmanagementlistComponent implements OnInit {
         this.pageno = 1;
         this.pagestart = 0;
         this.pageinitation = parseInt(this.pagestart) + parseInt(this.showrows);
+    }
+    callit(images) {
+        console.log(images);
+        // console.log(JSON.parse(images));
+        if (images == null || images=='') {
+            return '../../assets/images/logo.png';
+        }
+       /* if (images!=null && images !='' && images.indexOf('[') < 0) {
+            return '../../assets/images/' + images;
+        }*/
+        else {
+        let img = JSON.parse(images);
+        console.log('img-------------');
+        console.log(img);
+      //  return img[1];
+        return '../../assets/images/uploads/' + img[0];
+        }
     }
 }

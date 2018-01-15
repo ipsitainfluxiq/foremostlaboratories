@@ -1,0 +1,62 @@
+<app-adminheader></app-adminheader>
+<app-adminleftsidebar></app-adminleftsidebar>
+<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 dashboard_right nopaddingtopclass  ">
+  <div class="dashboard_right_wrapper ">
+<div class="container">
+  <div class="row">
+<!--    <div class="col-sm-2 paddingTop20">
+      <nav class="nav-sidebar">
+        <ul class="nav">
+          <li class="active"><a href="javascript:;"><span class="glyphicon glyphicon-star"></span> News</a></li>
+          <li><a href="javascript:;">Latest news</a></li>
+          <li><a href="javascript:;">Updates</a></li>
+          <li><a href="javascript:;">Training</a></li>
+          <li><a href="javascript:;">Nutrition</a></li>
+          <li><a href="javascript:;">Proteins</a></li>
+          <li><a href="javascript:;">Recipes</a></li>
+          <li><a href="javascript:;">Challenge</a></li>
+          <li class="nav-divider"></li>
+          <li><a href="javascript:;"><i class="glyphicon glyphicon-off"></i> Sign in</a></li>
+        </ul>
+      </nav>
+      <div><h2 class="add">Place for your add!</h2></div>
+    </div>-->
+
+    <div class="col-md-10 blogShort" *ngIf="blogmanagementlist">
+      <h1>{{blogmanagementlist.title}}</h1>
+
+      <!--<img src="{{callit(blogmanagementlist.image)}}" alt="post img" class="pull-left img-responsive postImg img-thumbnail margin10 imagediv">-->
+       <!-- <div *ngFor="let item of arr; let i = index">
+            <img src={{item}} alt="post img" class="pull-left img-responsive postImg img-thumbnail margin10 imagediv">
+        </div>
+        -->
+
+        <div *ngIf="arr">
+            <img src={{arr[0]}} alt="post img" class="pull-left img-responsive postImg img-thumbnail margin10 imagediv">
+        </div>
+        <article><p>
+            {{blogmanagementlist.description}}
+        </p>
+            <div class="clearfix"></div>
+        <div *ngFor="let item of arr | slice:1 ; let i = index">
+            <img src={{item}} alt="post img" class="col-page col-sm-4 col-md-3 imagediv">
+        </div>
+    <!--  <img src="{{callit(blogmanagementlist.image)}}" alt="post img" class="pull-left img-responsive postImg img-thumbnail margin10">-->
+
+<br>
+        <div class="clearfix"></div>
+        <div *ngFor="let item of videomanagementlist; let i = index">
+          <h3>{{item.title}}</h3>
+        <br>
+
+        <iframe width="100%" height="480" [attr.src]="showvideo(item.videolink)" frameborder="0" allowfullscreen></iframe>
+        <p>
+          {{item.description}}
+        </p>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+  </div>
+</div>

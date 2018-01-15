@@ -1,0 +1,50 @@
+<app-adminheader></app-adminheader>
+<app-adminleftsidebar></app-adminleftsidebar>
+
+<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 dashboard_right nopaddingtopclass  ">
+  <div class="dashboard_right_wrapper ">
+    <h4 class="paddingtopclass dashboardheader">All Blog Posts</h4>
+    <section class="publicaciones-blog-home nopaddingtopclass">
+      <div class="container">
+        <div class="">
+          <div class="row-page row">
+            <div *ngIf="blogmanagementlist">
+              <div *ngIf="blogmanagementlist.length>0">
+                <div class="col-page col-sm-8 col-md-6">
+                  <a href="" class="black fondo-publicacion-home">
+                    <div class="img-publicacion-principal-home">
+                      <img width="60px" height="60px" src="{{callit(blogmanagementlist[0].image)}}">
+                    </div>
+                    <div class="contenido-publicacion-principal-home">
+                      <h3>{{blogmanagementlist[0].title}}</h3>
+                      <p>{{blogmanagementlist[0].description.substr(0,300)}}<span>...</span></p>
+                    </div>
+                    <div class="mascara-enlace-blog-home">
+                      <span>View More </span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div *ngFor="let item of blogmanagementlist | orderBy:orderbyquery: 'desc' | slice:1; let i = index">
+              <div class="col-page col-sm-4 col-md-3">
+                <a href=""  class="fondo-publicacion-home">
+                  <div class="img-publicacion-home">
+                    <img class="img-responsive" src="{{callit(item.image)}}">
+                  </div>
+                  <div class="contenido-publicacion-home">
+                    <h3>{{item.title}}</h3>
+                    <p>{{item.description.substr(0,150)}}<span>...</span></p>
+                  </div>
+                  <div class="mascara-enlace-blog-home">
+                    <span>View More </span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

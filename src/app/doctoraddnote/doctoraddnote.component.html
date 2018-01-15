@@ -1,0 +1,17 @@
+<app-adminheader></app-adminheader>
+<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 dashboard_right wrappercontain2">
+  <div class="dashboard_right_wrapper">
+    <div class="dashboard1_div1 ">
+      <h4> Add Note</h4>
+      <div class="dashboard1form">
+          <form role="form" novalidate [formGroup]="dataForm" (ngSubmit)="dosubmit(dataForm.value)">
+            <label>Note*</label>
+            <textarea placeholder="Note" [formControl]="dataForm.controls['note']"></textarea>
+            <span class="has-error" *ngIf ="dataForm.controls['note'].touched && !dataForm.controls['note'].valid">Note is Required !</span>
+            <br><input type="submit" value="Submit" class="loginbtn2 cancel">
+            <button type="button" [routerLink]="['/doctorlist']" class="loginbtn2 cancel">Cancel</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>

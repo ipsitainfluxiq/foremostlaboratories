@@ -9,7 +9,7 @@ export class Commonservices {
         if (window.location.hostname == 'localhost') {
             this.url = 'http://localhost:3010/';
         } else {
-            this.url = 'http://influxiq.com:3015/';
+            this.url = 'http://influxiq.com:3018/';
         }
 
     }

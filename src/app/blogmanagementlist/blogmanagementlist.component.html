@@ -11,7 +11,7 @@
           <label>Search :</label> <input type="text" #listFilter (keyup)="0">
         </div>
 
-        <a [routerLink]="['/blogmanagementadd']" class="adadminlink">Add Blog Manager</a>
+        <a [routerLink]="['/blogmanagementadd']" class="adadminlink">Add Blog</a>
 
         <div class="clearfix"></div>
       </div>
@@ -30,20 +30,25 @@
             <th>Action</th>
           </tr>
 
+
+
           <tbody *ngFor="let item of datalist | orderBy:orderbyquery:orderbytype | usersearch:listFilter.value; let i = index">
           <tr *ngIf=" i>=pagestart && i < pageinitation">
             <td>{{i+1}}</td>
             <td>{{item.title}}</td>
             <td>{{item.description}}</td>
-            <td *ngIf="item.image"><img width="60px" height="60px" src="../../assets/images/uploads/{{item.image}}" ></td>
-            <td *ngIf="item.image==''"><img width="100%" src="../../assets/images/logo.png" ></td>
+          <!--  <td *ngIf="item.image"><img width="60px" height="60px" src="../../assets/images/uploads/{{item.image}}" ></td>-->
+           <!-- <td *ngIf="item.image==''">Not Available</td>-->
+            <td style="text-align: center"><img width="150px" height="120px" src="{{callit(item.image)}}" ></td>
             <td>{{item.cat_title}}</td>
             <td *ngIf="item.status==1">Active</td>
             <td *ngIf="item.status==0">Inactive</td>
             <td>{{item.priority}}</td>
-            <td>
+            <td class="atagsecondchild">
+              <a [routerLink]="['/videomanagerlist',item.id]" class="firstbuttonintd">Manage Video</a>
               <a [routerLink]="['/blogmanagementedit',item.id]">Edit</a>
-              <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" (click)="delConfirm(item.id)">Delete</a></td>
+              <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" (click)="delConfirm(item.id)">Delete</a>
+            </td>
           </tr>
           </tbody>
         </table>

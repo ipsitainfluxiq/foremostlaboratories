@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { CKEditorModule } from 'ng2-ckeditor';
 import {appRoutingProviders, routing} from './route';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
@@ -30,11 +29,31 @@ import { BlogcategoryeditComponent } from './blogcategoryedit/blogcategoryedit.c
 import { BlogmanagementaddComponent } from './blogmanagementadd/blogmanagementadd.component';
 import { BlogmanagementlistComponent } from './blogmanagementlist/blogmanagementlist.component';
 import { BlogmanagementeditComponent } from './blogmanagementedit/blogmanagementedit.component';
+// import { AddvideomanagerComponent } from './addvideomanager/addvideomanager.component';
+import { VideomanageraddComponent } from './videomanageradd/videomanageradd.component';
+import { VideomanagerlistComponent } from './videomanagerlist/videomanagerlist.component';
+import { VideomanagereditComponent } from './videomanageredit/videomanageredit.component';
+import { DoctoraddComponent } from './doctoradd/doctoradd.component';
+import { DoctorlistComponent } from './doctorlist/doctorlist.component';
+import { DoctoreditComponent } from './doctoredit/doctoredit.component';
+import { RepresentativelistComponent } from './representativelist/representativelist.component';
+import { DoctoraddnoteComponent } from './doctoraddnote/doctoraddnote.component';
+import { DoctorviewnoteComponent } from './doctorviewnote/doctorviewnote.component';
+import { DashboardmessageaddComponent } from './dashboardmessageadd/dashboardmessageadd.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AllblogsComponent } from './allblogs/allblogs.component';
+import { BlogpostdetailComponent } from './blogpostdetail/blogpostdetail.component';
+
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { OrderBy } from './orderby';
 import { UsersearchPipe } from './search.pipe';
 import { Ng2UploaderModule } from 'ng2-uploader';
+import { NgUploaderModule } from 'ngx-uploader';
+import {DatepickerModule} from 'ngx-bootstrap/datepicker';
+import { BsDatepickerModule } from 'ngx-bootstrap';
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 @NgModule({
     declarations: [
@@ -65,7 +84,21 @@ import { Ng2UploaderModule } from 'ng2-uploader';
         BlogcategoryeditComponent,
         BlogmanagementaddComponent,
         BlogmanagementlistComponent,
-        BlogmanagementeditComponent
+        BlogmanagementeditComponent,
+       // AddvideomanagerComponent,
+        VideomanageraddComponent,
+        VideomanagerlistComponent,
+        VideomanagereditComponent,
+        DoctoraddComponent,
+        DoctorlistComponent,
+        DoctoreditComponent,
+        RepresentativelistComponent,
+        DoctoraddnoteComponent,
+        DoctorviewnoteComponent,
+        DashboardmessageaddComponent,
+        DashboardComponent,
+        AllblogsComponent,
+        BlogpostdetailComponent
     ],
     imports: [
         BrowserModule,
@@ -74,8 +107,12 @@ import { Ng2UploaderModule } from 'ng2-uploader';
         HttpModule,
         routing,
         ModalModule.forRoot(),
-        CKEditorModule,
-        Ng2UploaderModule
+        Ng2UploaderModule,
+        NgUploaderModule,
+        DatepickerModule.forRoot(),
+        BsDatepickerModule.forRoot(),
+        Ng2AutoCompleteModule,
+        CKEditorModule
     ],
     providers: [appRoutingProviders, CookieService],
     bootstrap: [AppComponent]

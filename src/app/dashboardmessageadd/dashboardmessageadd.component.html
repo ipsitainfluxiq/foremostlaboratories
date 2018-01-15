@@ -1,0 +1,32 @@
+<app-adminheader></app-adminheader>
+<app-adminleftsidebar></app-adminleftsidebar>
+
+
+<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 dashboard_right">
+  <div class="dashboard_right_wrapper">
+    <div class="dashboard1_div1 ">
+      <h4 *ngIf="type==1"> Add Welcome Message</h4>
+      <h4 *ngIf="type==2"> Update Welcome Message</h4>
+
+
+        <div class="alert alert-success" *ngIf="showsuccessalert">
+            <strong>Success!</strong> Welcome message updated.
+        </div>
+
+
+
+      <div class="dashboard1form">
+          <label>Welcome Message</label>
+          <ckeditor
+                  [(ngModel)]="ckeditorContent"
+                  [config]="{uiColor: '#006c9b'}"
+                  debounce="500"
+          >
+          </ckeditor>
+        <br><button *ngIf="type==1" class="loginbtn2" (click)="addmessage()">Save</button> <!--Add new message-->
+        <br><button *ngIf="type==2" class="loginbtn2" (click)="addmessage()">Update</button> <!--Update message-->
+      </div>
+    </div>
+  </div>
+</div>
+

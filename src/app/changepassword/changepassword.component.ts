@@ -98,7 +98,7 @@ export class ChangepasswordComponent implements OnInit {
                         console.log('after putobject9999999 ');
                         console.log(this.usertype);
                         if (this.usertype == 0) {
-                            this.router.navigate(['/']);
+                            this.router.navigate(['/doctorlist']);
                         }
                         if (this.usertype == 1) {
                         this.router.navigate(['/adminlist']);
@@ -112,5 +112,14 @@ export class ChangepasswordComponent implements OnInit {
         }
 
 
+    }
+    gettypeClass() {
+        if (this.usertype == 0) {
+           return 'wrappercontain2';
+        }
+        if (this.usertype == 1) {
+            return '';
+        }
+        return '';
     }
 }

@@ -19,6 +19,8 @@ export class AdminheaderComponent implements OnInit {
         this.router = router;
         this.cookiedetails = this.addcookie.getObject('cookiedetails');
         this.usertype = this.addcookie1.getObject('usertype');
+       // console.log('cookiedetails - ');
+      //  console.log(this.cookiedetails);
         if (typeof(this.cookiedetails) == 'undefined') {
             console.log(this.cookiedetails + '??????????');
             console.log('admin_header');

@@ -23,11 +23,10 @@
             <option *ngFor="let item of blogcategorylist" value="{{item.id}}">{{item.title}}</option>
           </select>
           <span class="has-error" *ngIf ="dataForm.controls['bloglist'].touched && !dataForm.controls['bloglist'].valid">Blog Category is Required !</span>
-
-
-          <label>Image</label>
+          <img width="60px" height="60px" src="{{callit(dataForm.controls['image'])}}" >
+          <input type="button" class="btn btn-primary btnform" value="Upload Image" (click)="callimagesegment()">
+          <!--  <label>Image</label>
           <input type="hidden" class="form-control" [formControl]="dataForm.controls['image']">
-          <!-- <span class="has-error" *ngIf ="dataForm.controls['image'].touched && !dataForm.controls['image'].valid">Image is Required !</span>-->
           <div class="col-md-12">
             <div class="browsefileblock">
               <input type="file" accept="image/*" ngFileSelect [options]="basicOptions" (onUpload)="handleUpload($event)">
@@ -39,8 +38,8 @@
                 <input type="button" value="Delete" (click)="deleteimage(imagename)">
               </div>
             </div>
-          </div>
-
+          </div>-->
+          <br>
           <input type="checkbox" [formControl]="dataForm.controls['status']"><span class="wpcf7-list-item-label">Check the box to Make Active.</span>
 
           <label>Priority</label>
@@ -48,7 +47,8 @@
           <span class="has-error" *ngIf ="dataForm.controls['priority'].touched && !dataForm.controls['priority'].valid">Priority is Required !</span>
 
 
-          <br><input type="submit" value="Save" class="loginbtn2">
+          <br><input type="submit" value="Update" class="loginbtn2 cancel">
+          <button type="button" [routerLink]="['/blogmanagementlist']" class="loginbtn2 cancel">Cancel</button>
         </form>
 
       </div>
@@ -58,3 +58,63 @@
 
 
 <!--<app-footer></app-footer>-->
+
+
+<div *ngIf="issegmentmodalshown" class="modal fade uploadimagemodal" (onHidden)="onHidden()" bsModal #staticModal="bs-modal" [config]="{ show: true}"
+     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div>
+          <img src="../../assets/images/logo.png" alt="logo" class="img-responsive center-block" >
+        </div>
+      </div>
+      <div class="modal-body">
+        <div  class="img-responsive center-block clearfix">
+          <h4 class="modal-title center-block" style="padding-bottom: 5px; text-align: center">Upload Images</h4>
+          <label class="upload-button filechoosebtnbg center-block">
+            <input class="img-responsive center-block clearfix" type="file" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput">
+          </label>
+        </div>
+        <input type="file" multiple  class="form-control-file filechoosebtn hide" id="exampleFormControlFile1" accept="image/*" ngFileSelect [options]="basicOptions" (onUpload)="handleUpload($event,0)">
+        <div *ngIf="progress">
+          <div *ngIf="progress != 100">
+            Uploading: {{ progress }}%
+          </div>
+        </div>
+        <div *ngIf="progress == 100">
+          Image Uploaded..!
+        </div>
+        <div class="browsefileblockimg">
+          <div class="row">
+            <div class="browsefileblockimgmultiplerow">
+              <div class="browsefileblockimgmultiplerowsingle" *ngIf="files.length>0">
+                <div class="browsefileblockimgmultiplerowimgagebig">
+                  <img  class="img-responsive center-block firstimgheightset" style="width: 100%; height: auto" src="../../assets/images/uploads/{{files[0].response}}" >  <!--LOCAL-->
+                  <!-- <img  class="img-responsive center-block" style="width: 100%; height: auto" src="http://http://foremostlaboratories.com/assets/images/uploads/{{files[0].response[0]}}" >-->
+                </div>
+                <input type="button"  *ngIf="files.length>0" value="Delete" class="form-control btn btn-primary btnform  center-block" (click)="deleteimage1(0)" style="margin: 0 auto; width: 30%; float: none">
+              </div>
+              <div class="browsefileblockimgmultiplerowsingle" *ngFor="let item of files; let i = index">
+                <div class="browsefileblockimgmultiplerowsinglesmall">
+                  <img  class="img-responsive center-block" style="padding: 5px" *ngIf="i>0" src="../../assets/images/uploads/{{item.response}}">  <!--LOCAL-->
+                  <!--   <img  class="img-responsive center-block" style="padding: 5px" *ngIf="i>0" src="http://altfatale.com/assets/images/uploads/{{item.response[i]}}">  SERVER-->
+                </div>
+
+                <input type="button" *ngIf="i>0" value="Delete" class="form-control btn btn-primary btnform" (click)="deleteimage1(i)">
+              </div>
+
+              <div class="clearfix"></div>
+
+            </div>
+
+          </div>
+          <input type="button"  *ngIf="files.length>0" value="Save Images" class="btn btn-primary btnform center-block btnsavepopimage" (click)="saveimages()">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

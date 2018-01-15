@@ -21,6 +21,20 @@ import { BlogcategoryeditComponent } from './blogcategoryedit/blogcategoryedit.c
 import { BlogmanagementaddComponent } from './blogmanagementadd/blogmanagementadd.component';
 import { BlogmanagementlistComponent } from './blogmanagementlist/blogmanagementlist.component';
 import { BlogmanagementeditComponent } from './blogmanagementedit/blogmanagementedit.component';
+// import { AddvideomanagerComponent } from './addvideomanager/addvideomanager.component';
+import { VideomanageraddComponent } from './videomanageradd/videomanageradd.component';
+import { VideomanagerlistComponent } from './videomanagerlist/videomanagerlist.component';
+import { VideomanagereditComponent } from './videomanageredit/videomanageredit.component';
+import { DoctoraddComponent } from './doctoradd/doctoradd.component';
+import { DoctorlistComponent } from './doctorlist/doctorlist.component';
+import { DoctoreditComponent } from './doctoredit/doctoredit.component';
+import { RepresentativelistComponent } from './representativelist/representativelist.component';
+import { DoctoraddnoteComponent } from './doctoraddnote/doctoraddnote.component';
+import { DoctorviewnoteComponent } from './doctorviewnote/doctorviewnote.component';
+import { DashboardmessageaddComponent } from './dashboardmessageadd/dashboardmessageadd.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AllblogsComponent } from './allblogs/allblogs.component';
+import { BlogpostdetailComponent } from './blogpostdetail/blogpostdetail.component';
 
 
 const appRoutes: Routes = [
@@ -45,6 +59,21 @@ const appRoutes: Routes = [
     { path: 'blogmanagementadd', component: BlogmanagementaddComponent},
     { path: 'blogmanagementlist', component: BlogmanagementlistComponent},
     { path: 'blogmanagementedit/:id', component: BlogmanagementeditComponent},
+   // { path: 'addvideomanager/:id', component: AddvideomanagerComponent},
+    { path: 'videomanageradd/:id', component: VideomanageraddComponent},
+    { path: 'videomanagerlist/:id', component: VideomanagerlistComponent},
+    { path: 'videomanageredit/:id', component: VideomanagereditComponent},
+    { path: 'doctoradd', component: DoctoraddComponent},
+    { path: 'doctorlist', component: DoctorlistComponent},
+    { path: 'doctoredit/:id', component: DoctoreditComponent},
+    { path: 'representativelist', component: RepresentativelistComponent},
+    { path: 'doctoraddnote/:id', component: DoctoraddnoteComponent},
+    { path: 'doctorviewnote/:id', component: DoctorviewnoteComponent},
+    { path: 'dashboardmessageadd', component: DashboardmessageaddComponent},
+    { path: 'dashboard', component: DashboardComponent},
+    { path: 'allblogs', component: AllblogsComponent},
+    { path: 'blogpostdetail/:id', component: BlogpostdetailComponent}
+
 ];
 
 

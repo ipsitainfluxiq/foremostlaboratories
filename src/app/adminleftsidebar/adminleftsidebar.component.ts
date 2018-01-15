@@ -11,11 +11,15 @@ import {CookieService} from 'angular2-cookie/core';
 export class AdminleftsidebarComponent implements OnInit {
     private addcookie: CookieService;
     private cookiedetails;
+    private addcookie1: CookieService;
+    private usertype;
     public name;
 
-    constructor(addcookie: CookieService, private _http: Http, private router: Router) {
+    constructor(addcookie: CookieService, addcookie1: CookieService, private _http: Http, private router: Router) {
         this.addcookie = addcookie ;
+        this.addcookie1 = addcookie1 ;
         this.cookiedetails = this.addcookie.getObject('cookiedetails');
+        this.usertype = this.addcookie1.getObject('usertype');
         if (typeof(this.cookiedetails) == 'undefined') {
             console.log(this.cookiedetails + '??????????');
             console.log('admin_leftsidebar');

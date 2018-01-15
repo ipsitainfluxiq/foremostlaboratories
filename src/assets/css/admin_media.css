@@ -50,6 +50,36 @@
         width: 240px;
     }
 
-    .adadminlink{ float: none; display: block; margin: 0 auto; margin-top: 10px; width: 90px; text-align: center; }
+    .adadminlink{ float: none; display: block; margin: 0 auto; margin-top: 10px; width: 90px; text-align: center; padding-right: 2px;}
+}
 
+/*
+.tablediv videocol{
+    width: 50%;
+    height: auto;
+    position: absolute;
+
+}*/
+
+.tdvideo {
+    max-width: 375px !important;
+}
+/*.mainimg{
+     position: relative; width:70% !important;height: auto;z-index: 1;text-align: center;margin:  15px auto !important;
+}*/
+
+.childimgwraqpper{
+    position: relative;
+}
+
+.childimg{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 44;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, .5);
+    padding: 3px;
+    border-radius: 5px;
 }

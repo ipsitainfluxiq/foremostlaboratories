@@ -1,8 +1,11 @@
-import { Component, OnInit , NgZone } from '@angular/core';
+import { Component, OnInit , NgZone, EventEmitter } from '@angular/core';
 import {FormGroup, Validators, FormControl, FormBuilder} from '@angular/forms';
 import {Http} from '@angular/http';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {Commonservices} from '../app.commonservices' ;
+import { UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions } from 'ngx-uploader';
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-blogmanagementadd',
   templateUrl: './blogmanagementadd.component.html',
@@ -12,21 +15,23 @@ import {Commonservices} from '../app.commonservices' ;
 export class BlogmanagementaddComponent implements OnInit {
     public dataForm: FormGroup;
     private fb;
+    public disableuploader : any = 0;
     public serverurl;
-  //  public ckeditorContent:any;
     public blogcategorylist: any = [];
     private zone: NgZone;
-  //  private zone1: NgZone;
     public basicOptions: Object;
-  //  public basicOptions1: Object;
     public progress: number = 0;
-  //  public progress1: number = 0;
     private response: any = {};
-  //  private response1: any = {};
     public uploadedfilesrc: any;
-  //  public uploadedfilesrc1: any;
     public imagename: any;
-  //  public videoname: any;
+    public val: any = [];
+    options: UploaderOptions;
+    //  formData: FormData;
+    files: UploadFile[];
+    uploadInput: EventEmitter<UploadInput>;
+    humanizeBytes: Function;
+    dragOver: boolean;
+    private issegmentmodalshown: boolean = false;
 
     constructor(fb: FormBuilder, private _http: Http, private router: Router, private _commonservices: Commonservices) {
         this.fb = fb;
@@ -41,9 +46,14 @@ export class BlogmanagementaddComponent implements OnInit {
             }, error => {
                 console.log("Oooops!");
             });
+
+        this.files = []; // local uploading files array
+        this.uploadInput = new EventEmitter<UploadInput>(); // input events, we use this to emit data to ngx-uploader
+        this.humanizeBytes = humanizeBytes;
     }
 
     ngOnInit() {
+        this.files = [];
         this.dataForm = this.fb.group({
             title: ['', Validators.required],
             description: ['', Validators.required],
@@ -56,14 +66,17 @@ export class BlogmanagementaddComponent implements OnInit {
      //   this.ckeditorContent = '';
         this.zone = new NgZone({enableLongStackTrace: false});
         this.basicOptions = {
-            url: this.serverurl + 'uploads'
+            url: this.serverurl + 'uploads',
+            filterExtensions: false,
+            allowedExtensions: ['jpg', 'png','jpeg']
         };
-    // this.zone1 = new NgZone({enableLongStackTrace: false});
-     /*   this.basicOptions1 = {
-            url: this.serverurl + 'uploads1'
-        };*/
     }
-    handleUpload(data: any): void // uploading the images and saving to particular folder
+    deleteimage1(counter: any) {
+        // alert(6);
+        this.files.splice(counter,1);
+        // alert(35);
+    }
+ /*   handleUpload(data: any): void // uploading the images and saving to particular folder
     {
         console.log('hi');
         console.log(data);
@@ -91,7 +104,7 @@ export class BlogmanagementaddComponent implements OnInit {
                 }
             }
         });
-    }
+    }*/
 
   /*  handleUpload1(data: any): void // uploading the images and saving to particular folder
     {
@@ -128,7 +141,14 @@ export class BlogmanagementaddComponent implements OnInit {
 */
 
     dosubmit(formval) {
-        formval.image = formval.image.replace(/"/g, '');
+        console.log(formval.image);
+        let img= formval.image;
+        let arrimage = [];
+       for (let i in img) {
+            arrimage.push(img[i].response);
+        }
+        console.log('arrimage7');
+        console.log(arrimage);
         if (formval.status == true) {
             formval.status = 1;
         }
@@ -139,19 +159,16 @@ export class BlogmanagementaddComponent implements OnInit {
         for (x in this.dataForm.controls) {
             this.dataForm.controls[x].markAsTouched();
         }
-       /* console.log(this.dataForm.valid);
-        console.log(this.dataForm.controls['description'].touched);
-        console.log(this.dataForm.controls['description'].valid);*/
+
         if (this.dataForm.valid ) {
             let link = this.serverurl + 'addblogmanagement';
             let data = {
                 title: formval.title,
                 description: formval.description,
                 bloglist: formval.bloglist,
-                image: formval.image,
-               // video: formval.video,
+                image: JSON.stringify(arrimage), // as this is an object we have to stringfy it
                 status: formval.status,
-                priority: formval.priority
+                priority: formval.priority,
             };
             this._http.post(link, data)
                 .subscribe(res => {
@@ -169,23 +186,107 @@ export class BlogmanagementaddComponent implements OnInit {
         var link = this.serverurl + 'deleteimage';
         // var link ='http://influxiq.com:3001/deleteimage';
         var data = {id: '', image: imagename};
-        // console.log(data);
         this._http.post(link, data)
             .subscribe(res => {
                 var result = res.json();
-                // var result = res;
                 if (result.status == 'success') {
                     console.log('Image Deleted');
                     this.uploadedfilesrc = '';
                     this.progress = 0;
-
-                  //  this.is_error = 1;
                 }
 
             }, error => {
                 console.log("Oooops!");
             });
+    }
+    onUploadOutput(output: UploadOutput): void {
+        setTimeout(()=> {
+            // alert(8);
+        if (output.type === 'allAddedToQueue') { // when all files added in queue
+            // uncomment this if you want to auto upload files when added
+            this.disableuploader = 1;
+            console.log('this.disableuploader === before');
+            console.log(this.disableuploader);
+            setTimeout(()=> {
+                const event: UploadInput = {
+                    type: 'uploadAll',
+                    url: this.serverurl + 'uploads',
+                    // url: 'http://ngx-uploader.com/upload',
+                    method: 'POST',
+                    // data: {foo: output.file}
+                };
+                this.uploadInput.emit(event);
+
+            },200);
+        } else if (output.type === 'addedToQueue'  && typeof output.file !== 'undefined') { // add file to array when added
+
+            setTimeout(()=> {    // <<<---    using ()=> syntax
+
+                console.log('output.file[0].response');
+                console.log(output.file.response);
+                console.log(output.file);
+                console.log(output.file);
+               // this.files.push(output.file);
+
+                if(output.file.response!="") {
+                   // alert(7);
+                    console.log('output.file-------------------');
+                    console.log(output.file);
+                    console.log(output.file.response);
+                    // console.log(output.file[0].response);
+                    this.files.push(output.file);
+                }
+                this.disableuploader = 0;
+                console.log('this.disableuploader after');
+                console.log(this.disableuploader);
+                // alert(22);
+               // console.log(this.files);
+                console.log('this.files');
+                console.log(this.files);
+                // alert(55);
+              //  console.log(output.file[0].response);
+            },300);
+        } else if (output.type === 'uploading' && typeof output.file !== 'undefined') {
+            // alert(9);
+            console.log(this.files);
+            // update current data in files array for uploading file
+            const index = this.files.findIndex(file => typeof output.file !== 'undefined' && file.id === output.file.id);
+            this.files[index] = output.file;
+        } else if (output.type === 'removed') {
+            // remove file from array when removed
+            this.files = this.files.filter((file: UploadFile) => file !== output.file);
+        } else if (output.type === 'dragOver') {
+            this.dragOver = true;
+        } else if (output.type === 'dragOut') {
+            this.dragOver = false;
+        } else if (output.type === 'drop') {
+            this.dragOver = false;
+        }
+        /*console.log('files??');
+        console.log(this.files);*/
+        },200);
+    }
 
 
+    startUpload(): void {
+        const event: UploadInput = {
+            type: 'uploadAll',
+            url: 'http://ngx-uploader.com/upload',
+            method: 'POST',
+            data: { foo: 'bar' }
+        };
+
+        this.uploadInput.emit(event);
+    }
+
+    saveimages() {
+        console.log('this.files00000000');
+        console.log(this.files);
+        this.dataForm.patchValue({image: this.files});
+        this.issegmentmodalshown = false;
+    }
+    callimagesegment() {
+        console.log('callllllllllll');
+        this.issegmentmodalshown = true;
     }
 }

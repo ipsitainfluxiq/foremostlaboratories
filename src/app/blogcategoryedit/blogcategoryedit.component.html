@@ -18,7 +18,8 @@
           <input type="checkbox" [formControl]="dataForm.controls['status']"><span class="wpcf7-list-item-label">Check the box to Make Active.</span>
 
 
-          <br><input type="submit" value="Save" class="loginbtn2">
+          <br><input type="submit" value="Update" class="loginbtn2 cancel">
+          <button type="button" [routerLink]="['/blogcategorylist']" class="loginbtn2 cancel">Cancel</button>
         </form>
 
 

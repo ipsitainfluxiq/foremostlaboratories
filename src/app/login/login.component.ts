@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         this.usertype = this.addcookie1.getObject('usertype');
         if (typeof (this.cookiedetails) != 'undefined') {
             if (this.usertype == 0) {  // user
-                this.router.navigateByUrl('/');
+                this.router.navigateByUrl('/doctorlist');
             }
             if (this.usertype == 1) {  // admin
                 this.router.navigateByUrl('/adminlist');
@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit {
                             this.router.navigateByUrl('/adminlist');
                         }
                         if (this.usertype == 0) {  // user
-                        this.router.navigateByUrl('/');
+                        this.router.navigateByUrl('/doctorlist');
                     }
                     }
                     else {
