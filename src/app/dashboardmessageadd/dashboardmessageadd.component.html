@@ -19,7 +19,7 @@
           <label>Welcome Message</label>
           <ckeditor
                   [(ngModel)]="ckeditorContent"
-                  [config]="{uiColor: '#006c9b'}"
+                  [config]="{uiColor: '#027aa6',autoParagraph:true ,extraAllowedContent:'map(*){*}[*];area(*){*}[*];head(*){*}[*];style(*){*}[*];img(*){*}[*]'}"
                   debounce="500"
           >
           </ckeditor>

@@ -68,7 +68,36 @@ export class RepresentativelistComponent implements OnInit {
                 console.log('Oooops!');
             });
     }
-
+    sendmailforefully(item) {
+        console.log(item);
+        let link= this.serverurl + 'sendmail';
+        let data = {
+            first_name: item.first_name,
+            last_name: item.last_name,
+            personal_email: item.personal_email,
+            password: item.password,
+          /*  var cellphone = req.body.cellphone;
+        var address = req.body.address;
+        var city = req.body.city;
+        var state = req.body.state;
+        var postal_code = req.body.postal_code;
+        var best_time = req.body.best_time;
+        var healthcare_industry_year = req.body.healthcare_industry_year;
+        var carrer_change = req.body.carrer_change;
+        var doctor_count = req.body.doctor_count;
+        var get_started = req.body.get_started;
+        var additional_info = req.body.additional_info;
+        var background_info = req.body.background_info;
+        var greatest_attribute = req.body.greatest_attribute;
+        var add_time = req.body.add_time;*/
+        };
+        console.log(data);
+        this._http.post(link, data)
+            .subscribe(data => {
+            }, error => {
+                console.log('Oooops!');
+            });
+    }
     getSortClass(value: any) {
         if (this.orderbyquery == value && this.orderbytype == -1) {
             return 'caret-up';

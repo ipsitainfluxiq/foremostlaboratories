@@ -14,7 +14,7 @@
 
           <label>Description</label>
           <textarea [formControl]="dataForm.controls['description']"></textarea>
-          <span class="has-error" *ngIf ="dataForm.controls['description'].touched && !dataForm.controls['description'].valid">Description is Required !</span>
+          <!--<span class="has-error" *ngIf ="dataForm.controls['description'].touched && !dataForm.controls['description'].valid">Description is Required !</span>-->
 
           <label>Video Category</label>
           <select name="your-list" id="videocategory" [formControl]="dataForm.controls['videocategory']" (click)="checkcategory()">
@@ -38,7 +38,7 @@
               <iframe [attr.src]="videoURL(2)" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             </div>
 
-          <br><input type="submit" value="Save" class="loginbtn2">
+          <br><input type="submit" value="Save" class="loginbtn2 cancel">
         </form>
         <button (click)="goback()" class="loginbtn2">Back</button>
       </div>

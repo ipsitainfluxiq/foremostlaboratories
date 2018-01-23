@@ -23,7 +23,8 @@ export class OrderBy {
                 //console.log(args);
                 //console.log(type);
                 //console.log(a[args]);
-                var nameA = a[args].toString().toLowerCase(), nameB = b[args].toString().toLowerCase()
+               // var nameA = a[args].toString().toLowerCase(), nameB = b[args].toString().toLowerCase()
+                var nameA = a[args], nameB = b[args];
                 if (nameA < nameB) //sort string ascending
                     if(!type || type == 1)return -1
                     else return 1

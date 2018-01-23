@@ -29,6 +29,7 @@
     "moment": "^2.20.1",
     "ng2-auto-complete": "^0.12.0",
     "ng2-ckeditor": "^1.1.13",
+    "ng2-scroll-to": "^1.0.7",
     "ng2-uploader": "^2.0.0",
     "ngx-bootstrap": "^2.0.0-rc.0",
     "ngx-uploader": "^4.2.1",

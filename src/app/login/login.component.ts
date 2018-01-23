@@ -75,10 +75,10 @@ export class LoginComponent implements OnInit {
                         console.log('after putobject9999999 ');
                         console.log(this.usertype);
                         if (this.usertype == 1) {   // admin
-                            this.router.navigateByUrl('/adminlist');
+                            this.router.navigateByUrl('/dashboard');
                         }
                         if (this.usertype == 0) {  // user
-                        this.router.navigateByUrl('/doctorlist');
+                        this.router.navigateByUrl('/dashboard');
                     }
                     }
                     else {

@@ -23,7 +23,7 @@
             <option *ngFor="let item of blogcategorylist" value="{{item.id}}">{{item.title}}</option>
           </select>
           <span class="has-error" *ngIf ="dataForm.controls['bloglist'].touched && !dataForm.controls['bloglist'].valid">Blog Category is Required !</span>
-          <img width="60px" height="60px" src="{{callit(dataForm.controls['image'])}}" >
+          <!--<img width="60px" height="60px" src="{{callit(dataForm.controls['image'])}}" >-->
           <input type="button" class="btn btn-primary btnform" value="Upload Image" (click)="callimagesegment()">
           <!--  <label>Image</label>
           <input type="hidden" class="form-control" [formControl]="dataForm.controls['image']">

@@ -64,14 +64,28 @@
 
 
 <app-header></app-header>
-<img src="../../assets/images/home_demo_banner.jpg" alt="#" style="width: 100%;">
+<!--<img src="../../assets/images/home_demo_banner.jpg" alt="#" style="width: 100%;">-->
+<div class="home_banner_wrapper">
+  <h2>Earn north of 6 figures from just one qualified physician practice</h2>
+  <img src="../../assets/images/home_banner_img2.jpg" alt="#"  class="home_banner_img2">
+  <div class="home_banner_con">
+    <img src="../../assets/images/home_bammer_arrow_img.png" alt="#"  class="home_bammer_arrow_img">
+    <h3>We are <span>looking</span> for</h3>
+    <h4>Laboratory Sales Representative<br/>
+      Foremost Labs - United States<br/>
+      Full-time, Part-time, Commission
+    </h4>
+    <div class="homebannerdevider"></div>
+  <!--  <?php if(!isset($_SESSION['is_login'])) {?>   <a href="index.php#myDiv" class="homebannerlink"> Fill out our questionnaire and get hired</a> <?php } ?>-->
 
+      <a href="index.php#myDiv" class="homebannerlink" *ngIf="cookiedetails==0 || cookiedetails==null"> Fill out our questionnaire and get hired</a>
+  </div>
+</div>
 
-<div class="container-fluid home_block1">
+<div class="container-fluid home_block1" id="home_block1"  ng2-scrollable (elementVisible)="scrollEvent()">
 
   <h2>THE OPPORTUNITY</h2>
   <h3>Earn <span>$4,000</span> to <span>$10,000</span> a month from just one qualified practice!</h3>
-
 
   <div class="home_qualify_btn"><a href="index.php#myDiv" > See if you Qualify</a></div>
 
@@ -99,10 +113,10 @@
         <li>Our physician demographic encompasses pain management, psychiatry, OBGYN, primary care, addiction clinics, and more. Foremost
           Laboratories is a CLIA certified and COLA accredited, high complexity reference laboratory.</li>
 
-        <li>Additionally, Foremost enables scaled services for governmental entities and regulatory bodies.</li>
+        <!--<li>Additionally, Foremost enables scaled services for governmental entities and regulatory bodies.</li>
 
         <li>Benefits to the doctor include enhanced analytical information to help improve patient outcomes and documentation related to
-          MIPPS/MACRA comliance.</li>
+          MIPPS/MACRA comliance.</li>-->
 
       </ul>
     </div>
@@ -119,19 +133,65 @@
 
 
 
-<img src="../../assets/images/home_demo_img4.jpg" alt="#"  style="width: 100%;" >
+<!--<img src="../../assets/images/home_demo_img4.jpg" alt="#"  style="width: 100%;" >-->
+<div class="home_middle_block">
+  <img src="../../assets/images/home_page_middle_banner_mobile.jpg" alt="#" class="home_middle_block_mobile">
+
+  <div class="home_middle_block_wrapper">
+
+    <h2>IF YOU KNOW THE PHYSICIANS OR HAVE RELATIONSHIPS WITH THE OFFICE STAFF MEMBERS IN THE FOLLOWING TAXONOMIES WE HAVE THE PERFECT INCOME VERTICAL.
+      WITH THESE RELATIONSHIPS THIS IS BY FAR THE EASIEST SALE IN THE INDUSTRY. </h2>
+
+    <ul>
+
+      <li><label>OBGYN</label></li>
+      <li><label>General Practice</label></li>
+      <li><label>Family Medicine</label></li>
+      <li><label>Primary Care</label></li>
+
+
+      <li><label>Cardiology</label></li>
+      <li><label>Neurology</label></li>
+      <li><label>Internal Medicine</label></li>
+      <li><label>Endocrinology</label></li>
+
+
+      <li><label>DO
+        <span>(Doctor of Osteopathy)</span></label>
+
+      </li>
+
+      <li><label>Pain Management
+        <span>(Integrated Practices)</span></label>
+      </li>
+
+      <li><label>Integrated<br/>
+        Specialty Groups</label></li>
+      <li><label>You can work part
+        time or full time.</label>
+      </li>
 
 
 
-<div class="home_form_block" id="myDiv">
-  <h1>Foremost Laboratories Qualifying Questionnaire</h1>
+
+      <div class="clearfix"></div>
+    </ul>
+    <div class="clearfix"></div>
+
+  </div>
+
+</div>
+
+
+<div  id="myDiv" class="scrollable section home_form_block">
+  <h1 id="formh">Foremost Laboratories Qualifying Questionnaire</h1>
 
   <h3>To be considered for employment with Foremost Laboratories, please fill out this interview questionnaire. Once received, your hiring coordinator will be in<br/>
     touch to schedule a telephone interview. All information will be private and used only in relation to this application.<br/>
     It will not be provided to any 3rd parties.</h3>
 
 
-  <form role="form" novalidate [formGroup]="dataForm" (ngSubmit)="dosubmit(dataForm.value)">
+  <form role="form" novalidate [formGroup]="dataForm" (ngSubmit)="dosubmit(dataForm.value)" *ngIf="cookiedetails==0 || cookiedetails==null">
 
     <div class="form_div1">
 
@@ -221,8 +281,8 @@
       </div>
 
       <div class="form-group">
-        <label>
-          Best Time To Reach You </label>
+        <label>Best Time To Reach You </label>
+        <!--<label id="main-section">Bla bla bla</label>-->
         <input type="text" class="form-control"  [formControl]="dataForm.controls['best_time']">
 
         <div class="clearfix"></div>
@@ -383,68 +443,33 @@
 
 
     <input type="submit" value="submit" class="home_subbtn">
+
   </form>
 
 
 
 </div>
+<!--<button (click)="unsetcookie()">Menu Off</button><br>
+<button (click)="setcookie()">Menu On</button>-->
 <app-footer></app-footer>
-
 
 
 
 <div *ngIf="isModalShown" class="modal fade" (onHidden)="onHidden()" bsModal #staticModal="bs-modal" [config]="{ show: true}"
      tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-md">
     <div class="modal-content">
+      <div class="modal-header">
+     <!--   <img src="../../assets/images/logo.png">-->
+        <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img src="../../assets/images/logo.png" alt="logo" class="img-responsive center-block" >
+      </div>
       <div class="modal-body">
-        <p>FORM SUBMITTED SUCCESSFULLY!</p>
+        <p style="text-align: center">Foremost Laboratories Questionnaires submitted successfully!</p>
       </div>
     </div>
   </div>
 </div>
 
-
-
-
-
-<!--
-
-<div class="container-fluid footer_block1">
-
-  <div class="container">
-    <div class="footer_block1_left">Subscribe to Our weekly newsletter</div>
-    <div class="footer_block1_right">
-      <input type="text" placeholder="Enter Valid Email Address" class="footer_block1input">
-
-      <input type="submit" value="Submit" class="footer_block1btn">
-      <div class="clearfix"></div>
-    </div>
-
-    <div class="clearfix"></div>
-
-
-  </div>
-
-</div>
-
-
-<div class="container-fluid footer_block2">
-  <div class="container">
-    <div class="footer_block2_con1"> <a href="index.html"><img src="../../assets/images/logo.png" alt="#"></a></div>
-    <div class="footer_block2_con2">
-      <ul>
-        <li><a href="index.php" > Home </a></li>
-        <li><a href="index.php#myDiv"> Get Hired</a></li>
-        <li> <a href="quantitative _urine_analysis.html" > Quantitative Urine Analysis (QUA)</a></li>
-        <li> <a href="substance_monitoring.php" > Substance Monitoring</a></li>
-        <li> <a href="the_pharmacogenetic.php" > The Pharmacogenetic Test </a></li>
-        <li> <a href="essential_wellness.php">  Essential Wellness Blood Test Panel </a></li>
-        <li> <a href="allergen_Immunotherapy.php" >   Allergen Immunotherapy    </a></li>
-      </ul>
-    </div>
-    <div class="footer_block2_con3"> Copyright &copy; 2017 Foremost Laboratories. All rights reserved.</div>
-    <div class="clearfix"></div>
-  </div>
-</div>
--->

@@ -16,74 +16,85 @@
         <div class="clearfix"></div>
       </div>
       <div class="clearfix"></div>
+      <div  *ngIf="datalist">
+        <div *ngIf="datalist.length>0">
+          <div class="tablediv">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <th>#</th>
+                <th>Title <b [ngClass]="getSortClass('title')" (click)="manageSorting('title')" ></b></th>
+                <th>Description <b [ngClass]="getSortClass('description')" (click)="manageSorting('description')" ></b></th>
+                <th>Image</th>
+                <th>Category <b [ngClass]="getSortClass('cat_title')" (click)="manageSorting('cat_title')" ></b></th>
+                <th>status <b [ngClass]="getSortClass('status')" (click)="manageSorting('status')" ></b></th>
+                <th>Priority <b [ngClass]="getSortClass('priority')" (click)="manageSorting('priority')" ></b></th>
+                <th>Action</th>
+              </tr>
 
-      <div class="tablediv">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <th>#</th>
-            <th>Title <b [ngClass]="getSortClass('title')" (click)="manageSorting('title')" >|</b></th>
-            <th>Description <b [ngClass]="getSortClass('description')" (click)="manageSorting('description')" >|</b></th>
-            <th>Image</th>
-            <th>Bloglist <b [ngClass]="getSortClass('cat_title')" (click)="manageSorting('cat_title')" >|</b></th>
-            <th>status <b [ngClass]="getSortClass('status')" (click)="manageSorting('status')" >|</b></th>
-            <th>Priority <b [ngClass]="getSortClass('priority')" (click)="manageSorting('priority')" >|</b></th>
-            <th>Action</th>
-          </tr>
 
 
-
-          <tbody *ngFor="let item of datalist | orderBy:orderbyquery:orderbytype | usersearch:listFilter.value; let i = index">
-          <tr *ngIf=" i>=pagestart && i < pageinitation">
-            <td>{{i+1}}</td>
-            <td>{{item.title}}</td>
-            <td>{{item.description}}</td>
-          <!--  <td *ngIf="item.image"><img width="60px" height="60px" src="../../assets/images/uploads/{{item.image}}" ></td>-->
-           <!-- <td *ngIf="item.image==''">Not Available</td>-->
-            <td style="text-align: center"><img width="150px" height="120px" src="{{callit(item.image)}}" ></td>
-            <td>{{item.cat_title}}</td>
-            <td *ngIf="item.status==1">Active</td>
-            <td *ngIf="item.status==0">Inactive</td>
-            <td>{{item.priority}}</td>
-            <td class="atagsecondchild">
-              <a [routerLink]="['/videomanagerlist',item.id]" class="firstbuttonintd">Manage Video</a>
-              <a [routerLink]="['/blogmanagementedit',item.id]">Edit</a>
-              <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" (click)="delConfirm(item.id)">Delete</a>
-            </td>
-          </tr>
-          </tbody>
-        </table>
+              <tbody *ngFor="let item of datalist | orderBy:orderbyquery:orderbytype | usersearch:listFilter.value; let i = index">
+              <tr *ngIf=" i>=pagestart && i < pageinitation">
+                <td>{{i+1}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.description}}</td>
+                <!--  <td *ngIf="item.image"><img width="60px" height="60px" src="../../assets/images/uploads/{{item.image}}" ></td>-->
+                <!-- <td *ngIf="item.image==''">Not Available</td>-->
+                <td style="text-align: center"><img width="150px" height="120px" src="{{callit(item.image)}}" ></td>
+                <td>{{item.cat_title}}</td>
+                <td *ngIf="item.status==1">Active</td>
+                <td *ngIf="item.status==0">Inactive</td>
+                <td>{{item.priority}}</td>
+                <td class="atagsecondchild">
+                  <a [routerLink]="['/videomanagerlist',item.id]" class="firstbuttonintd">Manage Video</a>
+                  <a [routerLink]="['/blogpostdetail',item.id]" class="firstbuttonintd">Preview Blog Page</a>
+                  <a [routerLink]="['/blogmanagementedit',item.id]">Edit</a>
+                  <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" (click)="delConfirm(item.id)">Delete</a>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div *ngIf="datalist.length==0">
+          <h3 class="gotonextline">No Blogs</h3>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="pagination paginationdiv">
-    <ul class="pagination--items">
-      <li class="pagination--item">
-        <label>
-          Go to: </label>
-        <input type="text" [(ngModel)]="pageno" (blur)="pageval(3)">
+  <div  *ngIf="datalist">
+    <div *ngIf="datalist.length>0">
+      <div class="pagination paginationdiv">
+        <ul class="pagination--items">
+          <li class="pagination--item">
+            <label>
+              Go to: </label>
+            <input type="text" [(ngModel)]="pageno" (blur)="pageval(3)">
+            <div class="clearfix"></div>
+
+          </li>
+          <li class="pagination--item">
+            <label>
+              Show rows:</label>
+            <select [(ngModel)]="showrows" (click)="chagevalues()">
+              <option>5</option>
+              <option>10</option>
+              <option>25</option>
+            </select>
+            <div class="clearfix"></div>
+
+          </li>
+          <li class="pagination--item" >  <label>Page {{pageno}} of {{totalpage}}</label></li>
+          <li class="pagination--item" >
+            <img src="../../assets/images/pageprev.png" alt="#" (click)="pageval(1)">
+
+            <img src="../../assets/images/pagenext.png" alt="#" (click)="pageval(2)">
+          </li>
+        </ul>
         <div class="clearfix"></div>
-
-      </li>
-      <li class="pagination--item">
-        <label>
-          Show rows:</label>
-        <select [(ngModel)]="showrows" (click)="chagevalues()">
-          <option>5</option>
-          <option>10</option>
-          <option>25</option>
-        </select>
-        <div class="clearfix"></div>
-
-      </li>
-      <li class="pagination--item" >  <label>Page {{pageno}} of {{totalpage}}</label></li>
-      <li class="pagination--item" >
-        <img src="../../assets/images/pageprev.png" alt="#" (click)="pageval(1)">
-
-        <img src="../../assets/images/pagenext.png" alt="#" (click)="pageval(2)">
-      </li>
-    </ul>
-    <div class="clearfix"></div>
+      </div>
+    </div>
   </div>
 </div>
 

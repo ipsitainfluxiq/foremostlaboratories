@@ -16,7 +16,8 @@
           <textarea [formControl]="dataForm.controls['description']"></textarea>
           <span class="has-error" *ngIf ="dataForm.controls['description'].touched && !dataForm.controls['description'].valid">Description is Required !</span>
           <input type="checkbox" [formControl]="dataForm.controls['status']"><span class="wpcf7-list-item-label">Check the box to Make Active.</span>
-          <br><input type="submit" value="Save" class="loginbtn2">
+          <br><br><input type="submit" value="Save" class="loginbtn2 cancel">
+          <button type="button" [routerLink]="['/blogcategorylist']" class="loginbtn2 cancel">Cancel</button>
         </form>
 
 

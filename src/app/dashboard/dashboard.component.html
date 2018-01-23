@@ -1,42 +1,31 @@
 <app-adminheader></app-adminheader>
 <app-adminleftsidebar></app-adminleftsidebar>
-
-<!--
-<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 dashboard_right" [ngClass]="gettypeClass()">
-  <div class="dashboard_right_wrapper">
-    <div class="dashboard1_div1 ">
-      <h4 *ngIf="usertype==0" [innerHTML]="_sanitizer.bypassSecurityTrustHtml(welcome_message)" ></h4>
-      <h4 *ngIf="usertype==0" [innerHTML]="_sanitizer.bypassSecurityTrustHtml(welcome_message)" ></h4>
-    </div>
-  </div>
-</div>-->
 <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 dashboard_right nopaddingtopclass  ">
     <div class="dashboard_right_wrapper ">
         <div class="dashboard1_div1 nopaddingtopclass ">
             <div class="maindiv  nopaddingtopclass">
                 <div class="jumbotron pageheaderdiv nopaddingtopclass paddingleftclass ">
                     <h1 class="headingfont">Welcome to Foremost Laboratories</h1>
-                    <h2 *ngIf="usertype==1">Admin Dashboard</h2>
-                    <h2 *ngIf="usertype==0">Representative Dashboard</h2>
+                    <h2 *ngIf="usertype==1" class="h2class">Admin Dashboard</h2>
+                    <h2 *ngIf="usertype==0" class="h2class">Representative Dashboard</h2>
 
-                    <p *ngIf="usertype==1">Manage Blogs, Representatives, Doctors, Welcome message in your backend.</p>
-                    <p *ngIf="usertype==0">Manage Doctors, Change password in your backend.</p>
+                    <p *ngIf="usertype==1" class="pclass">Manage Blogs, Representatives, Doctors, Welcome message in your backend.</p>
+                    <p *ngIf="usertype==0"  class="pclass">Manage Doctors, Change password in your backend.</p>
                 </div>
-                <div class="col-lg-12 nopaddingtopclass" *ngIf="usertype==0">
-                    <!--<div class="col-lg-12 nopaddingtopclass" *ngIf="usertype==0" >-->
+                <div class="col-lg-12 nopaddingtopclass tcenter" *ngIf="usertype==0">
                     <h4 class="dashboardheader"> Message from Administrator :</h4>
-                    <div [innerHTML]="_sanitizer.bypassSecurityTrustHtml(welcome_message)" ></div>
+                    <div class="welcomemessage" [innerHTML]="_sanitizer.bypassSecurityTrustHtml(welcome_message)"></div>
                     <div class="marginbottom"></div>
                 </div>
             </div>
         </div>
-        <h4 class="paddingtopclass dashboardheader">Recent Blog Post</h4>
+        <h4 class="paddingtopclass">LABS INFORMATION, TRAINING CALLS AND QUICK REVIEW</h4>
         <section class="publicaciones-blog-home nopaddingtopclass">
             <div class="container">
                 <div class="">
                     <div class="row-page row">
                         <div *ngIf="blogmanagementlist">
-                        <div *ngIf="blogmanagementlist.length>0">
+                            <div *ngIf="blogmanagementlist.length>0">
                                 <div class="col-page col-sm-8 col-md-6">
                                     <a href="" class="black fondo-publicacion-home">
                                         <div class="img-publicacion-principal-home">
@@ -47,144 +36,88 @@
                                             <p>{{blogmanagementlist[0].description.substr(0,300)}}<span>...</span></p>
                                         </div>
                                         <div class="mascara-enlace-blog-home">
-                                            <span (click)="viewindetail(blogmanagementlist[0].id)">View More </span>
+                                            <a (click)="viewindetail(blogmanagementlist[0].id)"  [routerLink]="['/blogpostdetail',blogmanagementlist[0].id]">View More </a>
                                         </div>
                                     </a>
                                 </div>
-                        </div>
+                            </div>
+                            <div *ngIf="blogmanagementlist.length==0">
+                                <h3 class="gotonextline">No Recent Blogs</h3>
+                            </div>
                         </div>
                         <div *ngFor="let item of blogmanagementlist | orderBy:orderbyquery: 'desc' | slice:1; let i = index">
-                        <div class="col-page col-sm-4 col-md-3" *ngIf="i<6">
-                            <a href=""  class="fondo-publicacion-home">
-                                <div class="img-publicacion-home">
-                                    <img class="img-responsive" src="{{callit(item.image)}}">
-                                </div>
-                                <div class="contenido-publicacion-home">
-                                    <h3>{{item.title}}</h3>
-                                    <p>{{item.description.substr(0,150)}}<span>...</span></p>
-                                </div>
-                                <div class="mascara-enlace-blog-home">
-                                    <span (click)="viewindetail(item.id)">View More </span>
-                                </div>
-                            </a>
+                            <div class="col-page col-sm-4 col-md-3" *ngIf="i<6">
+                                <a href=""  class="fondo-publicacion-home">
+                                    <div class="img-publicacion-home">
+                                        <img class="img-responsive" src="{{callit(item.image)}}">
+                                    </div>
+                                    <div class="contenido-publicacion-home">
+                                        <h3>{{item.title}}</h3>
+                                        <p>{{item.description.substr(0,150)}}<span>...</span></p>
+                                    </div>
+                                    <div class="mascara-enlace-blog-home">
+                                        <a (click)="viewindetail(item.id)"  [routerLink]="['/blogpostdetail',blogmanagementlist[0].id]">View More </a>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                        </div>
-                     <!--   <div class="col-page col-sm-4 col-md-3">
-                            <a href="" class="fondo-publicacion-home">
-                                <div class="img-publicacion-home">
-                                    <img class="img-responsive" src="https://placeholdit.imgix.net/~text?txtsize=34&txt=&w=500&h=300">
-                                </div>
-                                <div class="contenido-publicacion-home">
-                                    <h3>Neque porro quisquam est qui dolorem ipsum</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat porta ex, sed ullamcorper ipsum lacinia nec.<span>...</span></p>
-                                </div>
-                                <div class="mascara-enlace-blog-home">
-                                    <span>Lorem </span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-page col-sm-4 col-md-3">
-                            <a href="" class="fondo-publicacion-home">
-                                <div class="img-publicacion-home">
-                                    <img class="img-responsive" src="https://placeholdit.imgix.net/~text?txtsize=34&txt=&w=500&h=300">
-                                </div>
-                                <div class="contenido-publicacion-home">
-                                    <h3>Neque porro quisquam est qui dolorem ipsum</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat porta ex, sed ullamcorper ipsum lacinia nec.<span>...</span></p>
-                                </div>
-                                <div class="mascara-enlace-blog-home">
-                                    <span>Lorem </span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="hidden-sm col-page col-sm-4 col-md-3">
-                            <a href="" class="fondo-publicacion-home">
-                                <div class="img-publicacion-home">
-                                    <img class="img-responsive" src="https://placeholdit.imgix.net/~text?txtsize=34&txt=&w=500&h=300">
-                                </div>
-                                <div class="contenido-publicacion-home">
-                                    <h3>Neque porro quisquam est qui dolorem ipsum</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat porta ex, sed ullamcorper ipsum lacinia nec.<span>...</span></p>
-                                </div>
-                                <div class="mascara-enlace-blog-home">
-                                    <span>Lorem </span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="hidden-sm col-page col-sm-4 col-md-3">
-                            <a href="" class="fondo-publicacion-home">
-                                <div class="img-publicacion-home">
-                                    <img class="img-responsive" src="https://placeholdit.imgix.net/~text?txtsize=34&txt=&w=500&h=300">
-                                </div>
-                                <div class="contenido-publicacion-home">
-                                    <h3>Neque porro quisquam est qui dolorem ipsum</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat porta ex, sed ullamcorper ipsum lacinia nec.<span>...</span></p>
-                                </div>
-                                <div class="mascara-enlace-blog-home">
-                                    <span>Lorem </span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-page col-sm-4 col-md-3">
-                            <a href="#" class="todas-las-publicaciones-home">
-                                <span>Neque porro quisquam est qui dolorem ipsum</span>
-                            </a>
-                        </div>-->
                     </div>
                 </div>
             </div>
             <div *ngIf="blogmanagementlist">
-          <!--  <button *ngIf="blogmanagementlist.length>5" class="activebuttonlink buttonright">View all</button>-->
                 <a  *ngIf="blogmanagementlist.length>5" [routerLink]="['/allblogs']" class="activebuttonlink buttonright">View all</a>
             </div>
         </section>
-<br><br>
+        <br><br>
 
         <h4 class="paddingtopclass dashboardheader">Doctor List</h4>
         <div class="container">
             <div class="row">
-                <div class="panel panel-default user_panel">
-                   <!-- <div class="panel-heading">
-                        <h3 class="panel-title">User List</h3>
-                    </div>-->
-                    <div class="panel-body">
-                        <div class="table-container">
-                            <table class="table-users table" border="0">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Name of Practice</th>
-                                    <th>Phone Number</th>
-                                    <th *ngIf="usertype==1">Added By</th>
-                                </tr>
-                                <tbody *ngFor="let item of doctorlist| orderBy:orderbydocquery ; let i = index">
-                                <tr  *ngIf="i<5">
-                                    <td width="10" align="center">
-                                        <i class="fa fa-2x fa-user fw">{{i+1}}</i>
-                                    </td>
-                                    <td>
-                                        {{item.firstname}} {{item.lastname}}<br><i class="fa fa-envelope"></i>
-                                    </td>
-                                    <td>
-                                        {{item.email}}
-                                    </td>
-                                    <td>
-                                        {{item.name_practice}}
-                                    </td>
-                                    <td>
-                                        {{item.phone}}
-                                    </td>
-                                    <td *ngIf="usertype==1">
-                                        {{item.first_name}} {{item.last_name}}
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
+                <div *ngIf="doctorlist">
+                <div *ngIf="doctorlist.length==0">
+                    <h3 class="gotonextline">No Doctor List</h3>
+                </div>
+                <div *ngIf="doctorlist.length>0">
+                    <div class="panel panel-default user_panel">
+                        <div class="panel-body">
+                            <div class="table-container">
+                                <table class="table-users table" border="0">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Name of Practice</th>
+                                        <th>Phone Number</th>
+                                        <th *ngIf="usertype==1">Added By</th>
+                                    </tr>
+                                    <tbody *ngFor="let item of doctorlist| orderBy:orderbydocquery ; let i = index">
+                                    <tr  *ngIf="i<5">
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw">{{i+1}}</i>
+                                        </td>
+                                        <td>
+                                            {{item.firstname}} {{item.lastname}}<br><i class="fa fa-envelope"></i>
+                                        </td>
+                                        <td>
+                                            {{item.email}}
+                                        </td>
+                                        <td>
+                                            {{item.name_practice}}
+                                        </td>
+                                        <td>
+                                            {{item.phone}}
+                                        </td>
+                                        <td *ngIf="usertype==1">
+                                            {{item.first_name}} {{item.last_name}}
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-
+                </div>
             </div>
         </div>
         <div *ngIf="doctorlist">
@@ -194,45 +127,49 @@
         <div *ngIf="usertype==1">
             <h4 class="paddingtopclass dashboardheader">Representative List</h4>
             <div class="container">
-                <div class="row">
-                    <div class="panel panel-default user_panel">
-                        <div class="panel-body">
-                            <div class="table-container">
-                                <table class="table-users table" border="0">
-                                    <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Phone Number</th>
-                                </tr>
-                                <tbody *ngFor="let item of representativelist | orderBy:orderbyrepquery; let i = index">
-                                <tr *ngIf="i<5">
-                                    <td width="10" align="center">
-                                        <i class="fa fa-2x fa-user fw">{{i+1}}</i>
-                                    </td>
-                                    <td>
-                                        {{item.first_name}} {{item.last_name}}<br><i class="fa fa-envelope"></i>
-                                    </td>
-                                    <td>
-                                        {{item.personal_email}}
-                                    </td>
-                                    <td>
-                                        {{item.cellphone}}
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
+                <div *ngIf="representativelist">
+                <div *ngIf="representativelist.length==0">
+                    <h3 class="gotonextline">No Representative List</h3>
+                </div>
+                <div *ngIf="representativelist.length>0">
+                    <div class="row">
+                        <div class="panel panel-default user_panel">
+                            <div class="panel-body">
+                                <div class="table-container">
+                                    <table class="table-users table" border="0">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Phone Number</th>
+                                        </tr>
+                                        <tbody *ngFor="let item of representativelist | orderBy:orderbyrepquery; let i = index">
+                                        <tr *ngIf="i<5">
+                                            <td width="10" align="center">
+                                                <i class="fa fa-2x fa-user fw">{{i+1}}</i>
+                                            </td>
+                                            <td>
+                                                {{item.first_name}} {{item.last_name}}<br><i class="fa fa-envelope"></i>
+                                            </td>
+                                            <td>
+                                                {{item.personal_email}}
+                                            </td>
+                                            <td>
+                                                {{item.cellphone}}
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-        </div>
+            </div>
             <div *ngIf="representativelist">
-              <!--  <button *ngIf="representativelist.length>5" class="activebuttonlink buttonright">View all</button>-->
                 <a  *ngIf="representativelist.length>5" [routerLink]="['/representativelist']" class="activebuttonlink buttonright">View all</a>
-            <br><br> </div>
-</div>
+                <br><br> </div>
+        </div>
     </div>
 </div>
-

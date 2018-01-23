@@ -14,6 +14,7 @@ import {CookieService} from 'angular2-cookie/core';
 export class AccesscodeComponent implements OnInit {
     public dataForm: FormGroup ;
     public fb;
+    public code:any;
     public serverurl;
     public is_error;
     private isSubmit;
@@ -21,7 +22,7 @@ export class AccesscodeComponent implements OnInit {
     private cookiedetails;
     private logid;
 
-    constructor(fb: FormBuilder, private _http: Http, private router: Router, addcookie: CookieService, private _commonservices: Commonservices) {
+    constructor(fb: FormBuilder, private _http: Http, private router: Router, addcookie: CookieService, private _commonservices: Commonservices,private route: ActivatedRoute) {
         this.fb = fb;
         this.serverurl = _commonservices.url;
         this.is_error = '';
@@ -40,6 +41,13 @@ export class AccesscodeComponent implements OnInit {
         this.dataForm = this.fb.group({
             accesscode: ['', Validators.required],
         });
+        this.route.params.subscribe(params => {
+            this.code = params['code'];
+            console.log(this.code);
+        });
+        if (this.code != null) {
+            (<FormControl>this.dataForm.controls['accesscode']).setValue(this.code);
+        }
     }
 
     dosubmit(formval) {

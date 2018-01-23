@@ -14,6 +14,9 @@ import { UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions }
 export class BlogmanagementeditComponent implements OnInit {
     public dataForm: FormGroup ;
     public fb;
+    public objectofimage: any;
+    public parseimage: any;
+    public imagedetail: any;
     public isSubmit;
     public disableuploader : any = 0;
     id: number;
@@ -85,12 +88,30 @@ export class BlogmanagementeditComponent implements OnInit {
                 console.log(result.status);
                 if (result.status == 'success' && typeof(result.item) != 'undefined') {
                     let userdet = result.item;
-                  //  this.uploadedfilesrc = '../../assets/images/uploads/' + userdet.image;
-                  //  console.log('**********' + userdet.image.replace(/"/g, ''));
-                  //  this.uploadedfilesrc = '../../assets/images/uploads/' +  userdet.image.replace(/"/g, '');
-                 //   this.imagename = userdet.image.replace(/"/g, '');
-                  //  console.log('???????' + this.uploadedfilesrc);
-                 //   formval.image = userdet.image.replace(/"/g, '');
+                  /*  this.hi = {
+                        response: JSON.parse(userdet.image)
+                    };
+                    this.files.push(this.hi);
+                    console.log(this.files);*/
+                    /* for (let i in JSON.stringify(userdet.image)) {
+                        this.imagedetail = userdet.image[i];
+                         this.hi = {
+                             response: JSON.parse(this.imagedetail)
+                         };
+                         this.files.push(this.hi);
+                         this.hi = '';
+                    }*/
+
+
+                    this.parseimage = JSON.parse(userdet.image);
+                    for (let i in this.parseimage) {
+                        this.imagedetail = this.parseimage[i];
+                        this.objectofimage = {
+                            response: this.imagedetail
+                        };
+                        this.files.push(this.objectofimage);
+                    }
+                    console.log(this.files);
                     (<FormControl>this.dataForm.controls['title']).setValue(userdet.title);
                     (<FormControl>this.dataForm.controls['description']).setValue(userdet.description);
                     (<FormControl>this.dataForm.controls['bloglist']).setValue(userdet.bloglist);
@@ -104,7 +125,9 @@ export class BlogmanagementeditComponent implements OnInit {
                 console.log('Ooops');
             });
     }
-
+    onHidden() {
+        this.issegmentmodalshown = false;
+    }
     dosubmit(formval) {
         let img= formval.image;
         console.log(img);

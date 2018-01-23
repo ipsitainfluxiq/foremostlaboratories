@@ -65,7 +65,8 @@
           <span class="has-error" *ngIf ="dataForm.controls['priority'].touched && !dataForm.controls['priority'].valid">Priority is Required !</span>
 
 
-          <br><input type="submit" value="Save" class="loginbtn2">
+          <br><input type="submit" value="Save" class="loginbtn2 cancel">
+          <button type="button" [routerLink]="['/blogmanagementlist']" class="loginbtn2 cancel">Cancel</button>
         </form>
 
       </div>

@@ -16,14 +16,15 @@
         <div class="clearfix"></div>
       </div>
       <div class="clearfix"></div>
-
+      <div  *ngIf="datalist">
+        <div *ngIf="datalist.length>0">
       <div class="tablediv">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <th>#</th>
-            <th>Name <b [ngClass]="getSortClass('first_name')" (click)="manageSorting('first_name')" >  |  </b></th>
-            <th>Email<b [ngClass]="getSortClass('personal_email')" (click)="manageSorting('personal_email')" >  |  </b></th>
-            <th>Phone<b [ngClass]="getSortClass('cellphone')" (click)="manageSorting('cellphone')" >  |  </b></th>
+            <th>Name <b [ngClass]="getSortClass('first_name')" (click)="manageSorting('first_name')" ></b></th>
+            <th>Email<b [ngClass]="getSortClass('personal_email')" (click)="manageSorting('personal_email')" ></b></th>
+            <th>Phone<b [ngClass]="getSortClass('cellphone')" (click)="manageSorting('cellphone')" ></b></th>
             <th>Action</th>
           </tr>
 
@@ -33,16 +34,26 @@
             <td>{{item.first_name}} {{item.last_name}}</td>
             <td>{{item.personal_email}}</td>
             <td>{{item.cellphone}}</td>
-            <td *ngIf="item.status==1" class="activebuttonlinkwrapper"><button (click)="changestatus(item.id,0)" class="activebuttonlink">Active</button></td>
-            <td *ngIf="item.status==0"><button (click)="changestatus(item.id,1)" class="activebuttonlink">Inctive</button></td>
+            <td class="activebuttonlinkwrapper">
+              <a class="widthfix" [routerLink]="['/repdetailinfo',item.id,1]">View Details</a>
+              <button  *ngIf="item.status==1" (click)="changestatus(item.id,0)" class="activebuttonlink">Active</button>
+              <button *ngIf="item.status==0" (click)="changestatus(item.id,1)" class="activebuttonlink">Inctive</button>
+              <a class="widthfix" (click)="sendmailforefully(item)">Send a duplicate mail with credentials</a>
+            </td>
           </tr>
           </tbody>
         </table>
       </div>
+        </div>
+        <div *ngIf="datalist.length==0">
+          <h3 class="gotonextline">No Representative List</h3>
+        </div>
+      </div>
     </div>
   </div>
 
-
+  <div  *ngIf="datalist">
+    <div *ngIf="datalist.length>0">
   <div class="pagination paginationdiv">
     <ul class="pagination--items">
       <li class="pagination--item">
@@ -71,5 +82,7 @@
       </li>
     </ul>
     <div class="clearfix"></div>
+  </div>
+    </div>
   </div>
 </div>

@@ -1,0 +1,69 @@
+<app-adminheader></app-adminheader>
+<app-adminleftsidebar></app-adminleftsidebar>
+<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 dashboard_right">
+  <div class="dashboard_right_wrapper">
+    <div class="dashboard1_div1 ">
+      <h4> Add File</h4>
+      <div class="dashboard1form">
+        <form role="form" novalidate [formGroup]="dataForm" (ngSubmit)="dosubmit(dataForm.value)">
+          <label>File Name</label>
+          <input type="text" class="form-control" placeholder="Name" [formControl]="dataForm.controls['name']" accept=".application/pdf">
+          <span class="has-error" *ngIf ="dataForm.controls['name'].touched && !dataForm.controls['name'].valid">File Name is Required !</span>
+
+
+          <div  class="img-responsive clearfix">
+            <label>Upload File</label>
+            <label class="upload-button filechoosebtnbg">
+              <input class="img-responsive clearfix" type="file" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" accept=".doc,.docx,.xml,.txt,.pdf,.csv,.html" *ngIf="disableuploader==0">
+            </label>
+          </div>
+
+
+          <div class="browsefileblockimg">
+            <div class="row">
+              <div class="browsefileblockimgmultiplerow">
+                <div class="browsefileblockimgmultiplerowsingle" *ngIf="files.length>0">
+                  <div class="browsefileblockimgmultiplerowimgagebig">
+                   <label>{{files[0].response}}</label>
+                  </div>
+                  <input type="button"  *ngIf="files.length>0" value="Delete" class="form-control btn btn-primary btnform  center-block" (click)="deleteimage1(0)" style="margin: 0 auto; width: 30%; float: none">
+                </div>
+              <!--  <div class="browsefileblockimgmultiplerowsingle" *ngFor="let item of files; let i = index">
+                  <div class="browsefileblockimgmultiplerowsinglesmall">
+                    <label>{{item.response}}</label>
+                  </div>
+
+                  <input type="button" *ngIf="i>0" value="Delete" class="form-control btn btn-primary btnform" (click)="deleteimage1(i)">
+                </div>
+-->
+                <div class="clearfix"></div>
+
+              </div>
+
+            </div>
+         <!--   <input type="button"  *ngIf="files.length>0" value="Save Images" class="btn btn-primary btnform center-block btnsavepopimage" (click)="saveimages()">-->
+          </div>
+
+
+
+
+          <label>Description</label>
+          <textarea [formControl]="dataForm.controls['description']"></textarea>
+          <span class="has-error" *ngIf ="dataForm.controls['description'].touched && !dataForm.controls['description'].valid">Description is Required !</span>
+
+          <input type="checkbox" [formControl]="dataForm.controls['status']"><span class="wpcf7-list-item-label">&nbsp;&nbsp;Check the box to Make Active.</span>
+          <label>Priority</label>
+          <input type="number" class="form-control" placeholder="Priority" [formControl]="dataForm.controls['priority']">
+          <span class="has-error" *ngIf ="dataForm.controls['priority'].touched && !dataForm.controls['priority'].valid">Priority is Required !</span>
+
+
+          <br><input type="submit" value="Save" class="loginbtn2 cancel">
+          <button type="button" [routerLink]="['/filemanagerlist']" class="loginbtn2 cancel">Cancel</button>
+        </form>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>

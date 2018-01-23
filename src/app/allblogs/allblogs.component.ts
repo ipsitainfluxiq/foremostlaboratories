@@ -23,19 +23,19 @@ export class AllblogsComponent implements OnInit {
         this.usertype = this.addcookie1.getObject('usertype'); // 1 = admin  ,, 0 = representative
         this.serverurl = _commonservices.url;
         console.log('? ' + this.usertype);
-        this.orderbyquery = 'datetimestamp';
+        this.orderbyquery = 'priority';
     }
 
   ngOnInit() {
       this.getblogmanagementlist();
   }
     getblogmanagementlist() {
-        let link = this.serverurl + 'blogmanagementlist';
+        let link = this.serverurl + 'blogmanagementlist_activeonly';
         this._http.get(link)
             .subscribe(res => {
                 let result = res.json();
                 this.blogmanagementlist = result.res;
-                console.log(this.blogmanagementlist[0]);
+               // console.log(this.blogmanagementlist[0]);
             }, error => {
                 console.log('Oooops!');
             });
@@ -51,5 +51,9 @@ export class AllblogsComponent implements OnInit {
             console.log(img);
             return '../../assets/images/uploads/' + img[0];
         }
+    }
+    viewindetail(itemid) {
+        //  alert('??');
+        this.router.navigate(['/blogpostdetail', itemid]);
     }
 }

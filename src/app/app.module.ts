@@ -43,6 +43,11 @@ import { DashboardmessageaddComponent } from './dashboardmessageadd/dashboardmes
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AllblogsComponent } from './allblogs/allblogs.component';
 import { BlogpostdetailComponent } from './blogpostdetail/blogpostdetail.component';
+import { RepdetailinfoComponent } from './repdetailinfo/repdetailinfo.component';
+import { CancerScreeningComponent } from './cancer-screening/cancer-screening.component';
+import { FilemanageraddComponent } from './filemanageradd/filemanageradd.component';
+import { FilemanagerlistComponent } from './filemanagerlist/filemanagerlist.component';
+import { FilemanagereditComponent } from './filemanageredit/filemanageredit.component';
 
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
@@ -54,6 +59,8 @@ import {DatepickerModule} from 'ngx-bootstrap/datepicker';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { CKEditorModule } from 'ng2-ckeditor';
+import {ScrollToModule} from 'ng2-scroll-to';
+import { Ng2ScrollableModule } from 'ng2-scrollable';
 
 @NgModule({
     declarations: [
@@ -98,7 +105,12 @@ import { CKEditorModule } from 'ng2-ckeditor';
         DashboardmessageaddComponent,
         DashboardComponent,
         AllblogsComponent,
-        BlogpostdetailComponent
+        BlogpostdetailComponent,
+        RepdetailinfoComponent,
+        CancerScreeningComponent,
+        FilemanageraddComponent,
+        FilemanagerlistComponent,
+        FilemanagereditComponent
     ],
     imports: [
         BrowserModule,
@@ -112,7 +124,9 @@ import { CKEditorModule } from 'ng2-ckeditor';
         DatepickerModule.forRoot(),
         BsDatepickerModule.forRoot(),
         Ng2AutoCompleteModule,
-        CKEditorModule
+        CKEditorModule,
+        ScrollToModule.forRoot(),
+        Ng2ScrollableModule
     ],
     providers: [appRoutingProviders, CookieService],
     bootstrap: [AppComponent]

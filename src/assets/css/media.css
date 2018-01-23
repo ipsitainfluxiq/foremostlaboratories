@@ -5,6 +5,7 @@
 
 @media(max-width:1800px){
 
+
 .home_banner_wrapper h2 {
     font-size: 32px;
     padding: 8px 5px;
@@ -63,10 +64,38 @@
 
 }
 
-
-
-
 @media(max-width:1700px){
+
+    .footer_block_part2 .footer_block2_con2  ul li{  padding: 0 18px 0 6px;}
+
+
+    .footer_block_part2 .footer_block2_con2 .nav1 a{ font-size: 20px;}
+
+    .navbar-collapse {
+        padding-right: 0!important;
+        padding-left: 0!important;}
+
+
+    .nav1 a{ font-size: 18px;}
+
+    .top_menublock .menublock_wrapper li a{padding: 10px 6px !important;}
+
+    .allergyfingerpickblock1single h2 {
+        font-size: 34px;
+    }
+    .allergyfingerpickblock1single p {
+        font-size: 22px;
+    }
+    .allergy_finger_pick_block7 {
+        background: #e0eef3 url(../images/allergy_finger_pick_block7_bg.jpg) no-repeat right 30% center;
+    }
+    .allergy_finger_pick_block2 {
+        background: #8a9b16 url(../images/allergy_finger_pick_block2_bg.jpg) no-repeat left 50% center;
+    }
+
+    .allergy_finger_pick_block4 {
+        background: #8a9b16 url(../images/allergy_finger_pick_block4_bg.jpg) no-repeat right 50% center;
+    }
 
     .footer_block_part2 .footer_block2_con2{ float:right; padding:0px!important; width:1380px; margin-top:28px;}
 
@@ -92,7 +121,7 @@
     width: 1420px;
     padding: 0px;
 }
-.top_menublock2 .menublock_wrapper li{ font-size:14px;}
+.top_menublock2 .menublock_wrapper li{ font-size:13px;}
 
 
 
@@ -119,6 +148,57 @@
   .essential_banner_wrapper h4{ font-size: 50px; padding: 50px 0 0 0;}
     .essential_banner_wrapper h4 label{ font-size: 26px;}
 
+}
+
+@media(max-width:1666px) {
+    .secondbg{
+        margin-top: 3%;
+    }
+
+    .allergy_finger_pick_block1 .allergy_finger_pick_block1_right button {
+        width: 205px;
+    }
+    .allergy_finger_pick_block3_list2:after {
+        width: 55%;
+    }
+    .allergy_finger_pick_block3 {
+        background: url(../images/allergy_finger_pick_block3_bg.png) no-repeat right -27% center;
+    }
+    .allergy_finger_pick_block2_content h2 {
+        font-size: 60px;
+        line-height: 64px;
+    }
+
+    .allergy_finger_pick_block2 {
+        background: #8a9b16 url(../images/allergy_finger_pick_block2_bg.jpg) no-repeat left 15% center;
+    }
+
+    .allergy_finger_pick_block4_content h2 {
+        font-size: 60px;
+        line-height: 64px;
+    }
+
+    .allergy_finger_pick_block4 {
+        background: #8a9b16 url(../images/allergy_finger_pick_block4_bg.jpg) no-repeat right 15% center;
+    }
+
+    .allergy_banner_wrapper {
+        background: #fafdfd url(../images/allergy_banner.jpg) no-repeat right 40% top;
+    }
+
+    /*.allergy_banner_logo {
+        width: 350px;
+    }*/
+
+    .allergy_banner_wrapper h4 {
+        font-size: 50px;
+        line-height: 50px;
+    }
+
+    .allergy_banner_wrapper h5 {
+        font-size: 43px;
+        line-height: 43px;
+    }
 }
 
 @media(max-width:1600px){
@@ -152,7 +232,13 @@
 @media(max-width:1560px){
 
 
-
+    .footer_block2 .footer_block2_con2{ width: 100%!important;}
+    .footer_block_part2 .footer_block2_con2 .nav1 a {
+        font-size: 26px;
+    }
+    .border-right-css_wrapper {
+        width: 2% !important;
+    }
     .footer_block_part2 .footer_block2_con2{ float:right; padding:0px!important; width:100%; margin-top:20px!important;   text-align:center;}
 
     .footer_block_part2 .footer_block2_con2 ul li{ display:inline-block; float:none;}
@@ -276,10 +362,10 @@
 
 }
 
-
-
 @media(max-width:1460px){
-
+    .allergy_finger_pick_block7_list2 h2 {
+        font-size: 60px;
+    }
     .footer_block2 .footer_block2_con2{ float: none;  margin: 0 auto;  padding: 0 0 28px 0;}
     .footer_block2 .footer_block2_con1{ float: none; margin: 0 auto;}
 
@@ -303,6 +389,13 @@
 }
 
 @media(max-width:1380px){
+    .allergy_finger_pick_block5 {
+        background: url(../images/allergy_finger_pick_block5_bg.png) no-repeat right 5% bottom 30%;
+        padding-left: 0px;
+        padding-right: 0px;
+        background-size: 286px;
+    }
+
     .top_menublock .container{ width: 100%!important;}
 
 
@@ -354,12 +447,88 @@
     .allergen_bottom_block5 .allergen_block5_subdiv .text_div{ width: 80%;}
 }
 
+@media(max-width:1366px) {
+    .allergy_finger_pick_block3 {
+        padding-top: 20px;
+        padding-bottom: 10px;
+    }
+    .allergy_finger_pick_block5 {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .pagemainwrapper {
+        width: 96%;
+    }
+    .allergy_finger_pick_block1_left_single {
+        width: 32.3333%;
+    }
+    .border-right-css_wrapper {
+        width: 2% !important;
+    }
+    .allergy_finger_pick_block1 .allergy_finger_pick_block1_right button {
+        width: 190px;
+    }
+    .allergy_finger_pick_block2 {
+        background: #8a9b16 url(../images/allergy_finger_pick_block2_bg.jpg) no-repeat left 20% center;
+    }
+    .allergy_finger_pick_block2_content h2 {
+        font-size: 50px;
+        line-height: 54px;
+    }
+
+    .allergyfingerpickblock1wrapper img {
+        width: 94px;
+    }
+
+    .allergyfingerpickblock1single {
+        margin-left: 96px;
+    }
+    .allergyfingerpickblock1single h2 {
+        font-size: 30px;
+    }
+
+    .allergyfingerpickblock1single p {
+        font-size: 21px;
+        line-height: 22px;
+    }
+
+    .allergy_finger_pick_block1 {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        height: 160px;
+    }
+
+    .allergy_finger_pick_block4 {
+        background: #8a9b16 url(../images/allergy_finger_pick_block4_bg.jpg) no-repeat right 20% center;
+    }
+    .allergy_finger_pick_block4_content h2 {
+        font-size: 50px;
+        line-height: 54px;
+    }
+
+    .allergy_banner_wrapper_content {
+        width: 680px;
+    }
+    .allergy_banner_wrapper h4 {
+        font-size: 45px;
+        line-height: 48px;
+    }
+    .allergy_banner_wrapper h5 {
+        font-size: 40px;
+        line-height: 40px;
+    }
+}
 
 @media(max-width:1280px){
+    .allergy_finger_pick_block3 {
+        background: url(../images/allergy_finger_pick_block3_bg.png) no-repeat right -60% center;
+    }
+    .allergy_finger_pick_block3_list2 h2 {
+        font-size: 60px;
+    }
 .home_block1_text_div .home_block1_text{ width:100%; float:none; padding-right:0; }
 
 .home_block1_text_div .home_img1{ width:auto; float:none; margin:0 auto; max-width:100%; margin-bottom:0px; display:block;}
-
 
 
 
@@ -391,8 +560,180 @@
     .form_div2 .form-group label{ font-size: 14px;}
 }
 
-
 @media(max-width:1199px){
+    .is-table-row [class*="col-"] {
+        float: none;
+        display: block;
+        vertical-align: middle;
+        padding: 0px;
+        width: 100%;
+    }
+    .is-table-row {
+        display: inline-block;
+    }
+    .allergy_finger_pick_block8_imgwrapper {
+        width: 100%;
+    }
+    .allergy_finger_pick_block8_content {
+        border-left: 0px solid #1c89d7;
+        height: 100%;
+        padding-left: 0px !important;
+        border-top: 6px solid #1c89d7;
+        margin-top: 20px !important;
+        padding-top: 20px !important;
+    }
+    .allergy_finger_pick_block1 {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        height: auto;
+    }
+    .allergyfingerpickblock1single {
+        text-align: left;
+    }
+
+    .allergy_finger_pick_block7_mobilebg {
+        display: block;
+        width: 100%;
+    }
+    .allergy_finger_pick_block7_content {
+        position: inherit;
+        left: 0%;
+        top: 0;
+        transform: inherit;
+    }
+
+    .allergy_finger_pick_block7_list2 {
+        position: relative;
+        width: 94%;
+        margin: 0 auto;
+    }
+    .allergy_finger_pick_block7_list2 ul {
+        text-align: left;
+    }
+
+    .allergy_finger_pick_block7 {
+        height: auto;
+        background: #e0eef3 !important;
+    }
+    .allergy_finger_pick_block5_list2 ul {
+        position: relative;
+        width: 100%;
+        margin-top: 20px;
+        text-align: left;
+    }
+    .allergy_finger_pick_block5_mobilebg {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+    }
+    .allergy_finger_pick_block5{
+        background: #fff !important;
+    }
+
+    .allergy_finger_pick_block6_list1_single_wrapper {
+        width: 100%;
+        height: 153px;
+    }
+
+    .allergy_finger_pick_block3{
+        padding-top: 0px;
+    }
+    .allergy_finger_pick_block3_list1{
+        padding-top: 20px;
+    }
+    .allergy_finger_pick_block3_list2 {
+        position: relative;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+    }
+    .allergy_finger_pick_block3{
+        background:none !important;
+    }
+    .allergy_finger_pick_block3_mobilebg{
+        display: block;
+        width: 100%;
+    }
+
+    .allergy_finger_pick_block4{
+        background:#8a9b16 !important;
+        height: auto;
+    }
+    .allergy_finger_pick_block4_content {
+        position: inherit;
+        right: 0;
+        top: 0;
+        transform: inherit;
+        margin: 15px auto;
+    }
+
+    .allergy_finger_pick_block4_mobilebg{
+        display: block;
+        width: 100%;
+    }
+
+    .allergy_finger_pick_block2{
+        background:#8a9b16 !important;
+        height: auto;
+    }
+    .allergy_finger_pick_block2_content {
+        position: inherit;
+        right: 0;
+        top: 0;
+        transform: inherit;
+        margin: 15px auto;
+    }
+
+    .allergy_finger_pick_block2_mobilebg{
+        display: block;
+        width: 100%;
+    }
+    .allergy_finger_pick_block1 .allergy_finger_pick_block1_left {
+        width: 100%;
+    }
+    .allergy_finger_pick_block1 {
+        height: auto;
+    }
+    .allergy_finger_pick_block1 .allergy_finger_pick_block1_right {
+        position: inherit;
+        top: 0;
+        right: 0;
+        transform: inherit;
+        width: 100%;
+        text-align: center;
+    }
+    .allergy_finger_pick_block1 .allergy_finger_pick_block1_right button {
+        float: none;
+        margin-top: 24px;
+    }
+    .allergy_banner_wrapper_content {
+        position: inherit;
+        left: 0%;
+        top: 0;
+        transform: inherit;
+        width: 100%;
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
+    .allergy_banner_wrapper {
+        background: #fafdfd !important;
+        height: auto;
+    }
+    .allergy_mobilebanner{ display: block; width: 100%;}
+    .pagemainwrapper {
+        width: 96%;
+        text-align: center;
+    }
+    .allergy_banner_wrapper h4 {
+        width: 100%;
+        padding: 15px 0 0 0;
+    }
+    .allergy_banner_wrapper h5 {
+        width: 100%;
+        padding: 5px 0 0 0;
+    }
+
+
     .essential_block4 .essential_block4_right{ margin-top: 0px;}
 
     .demoh2{ display: none;}
@@ -407,7 +748,7 @@
     .footer_block1 .footer_block1_right{ width: 430px; float: none; text-align: center; margin: 0 auto; margin-bottom: 27px;}
 
     .footer_block2 .footer_block2_con2{ width: 100%!important; text-align: center; padding-bottom: 15px;}
-    .footer_block2 .footer_block2_con2 li{ display: inline-block; margin:0 10px 10px 10px!important; float: none!important;}
+    .footer_block2 .footer_block2_con2 li{ display: inline-block; margin:0 0 10px 0!important; float: none!important;}
 
     .footer_block2 .footer_block2_con3{ width: 100%; padding-top: 0px;}
 
@@ -586,6 +927,18 @@
 }
 
 @media(max-width:991px){
+    .allergyfingerpickblock1single {
+        text-align: center;
+    }
+    .allergy_finger_pick_block1_left_single {
+        width: 31.3333%;
+        text-align: center;
+    }
+
+    .allergy_finger_pick_block6_list1_single_wrapper {
+        height: 126px;
+    }
+
     .form_div1{ width:90%;}
 
     .form_div2{ width:90%;}
@@ -612,9 +965,93 @@
     .essential_block7{ background: none; height: auto; padding-top: 20px;}
 
     .essential_block7_img{ display: block; width: 100%;}
+    .allergy_finger_pick_block1 {
+        height: auto;
+    }
+    .allergyfingerpickblock1wrapper img {
+        position: inherit;
+        left: 0px;
+        top: 0;
+        transform: inherit;
+        text-align: center;
+    }
+    .allergyfingerpickblock1single {
+        margin-left: auto;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+}
+
+@media(max-width:800px) {
+    .allergy_finger_pick_block3 .allergy_finger_pick_block3_list1 li {
+        margin: 0 0 10px 0;
+        padding: 28px 10px 0 10px;
+        background: url(../images/allergy_finger_pick_block3_listimg.png) no-repeat top center;
+    }
+    .allergy_finger_pick_block3 .allergy_finger_pick_block3_list2 li {
+        margin: 0 0 10px 0;
+        padding: 28px 10px 0 10px;
+        background: url(../images/allergy_finger_pick_block3_listimg2.png) no-repeat top center;
+    }
+    .allergy_finger_pick_block3_list2:after{
+        background: -webkit-linear-gradient(left, rgba(218,218,218,0), rgba(218,218,218,1), rgba(218,218,218,0));
+        width: 100%;
+    }
+
+    .allergy_finger_pick_block5 .allergy_finger_pick_block5_list2 li {
+        margin: 0 0 10px 0;
+        padding: 28px 10px 0 10px;
+        background: url(../images/allergy_finger_pick_block3_listimg2.png) no-repeat top center;
+        text-align: center;
+    }
+    .allergy_finger_pick_block5_list2 ul {
+        width: 100%;
+    }
+    .allergy_finger_pick_block3_list2 li {
+        text-align: center;
+    }
+    .allergy_finger_pick_block3_list2 li{
+        text-align: center;
+    }
+
+    .allergy_finger_pick_block7 .allergy_finger_pick_block7_list2 li {
+        margin: 0 0 10px 0;
+        padding: 28px 0px 0 0px;
+        background: url(../images/allergy_finger_pick_block3_listimg2.png) no-repeat top center;
+        text-align: center;
+    }
 }
 
 @media(max-width:776px){
+    .allergy_finger_pick_block8_imgwrapper img {
+        width: 100%;
+        position: inherit;
+        top: 50%;
+        left: 0%;
+        transform: translateY(-50%);
+    }
+
+    .allergy_finger_pick_block1_left_single {
+        width: 100%;
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .allergy_finger_pick_block6_list1_single_wrapper {
+        width: 402px;
+        height: 184px;
+        margin: 14px auto;
+    }
+    ol.what_list li {
+        padding-left: 35px;
+        margin-left: 0px;
+        padding-right: 35px;
+        clear: both;
+        width: 100%;
+        text-align: left;
+    }
+
     .top_menublock .menublock_wrapper{ width: 100%; background: #ececec;}
 
     .responsivemenu{ display: inline-block;
@@ -724,11 +1161,59 @@
     .home_middle_block .home_middle_block_wrapper ul li{ width: 32.3%;}
 }
 
-
-
-
-
+@media(max-width:440px){
+    .allergy_finger_pick_block6_list1_single_wrapper {
+        width: 94%;
+        height: 144px;
+        margin: 14px auto;
+    }
+}
 @media(max-width:580px){
+
+    .footer_block_part2 .footer_block2_con2 ul li:last-of-type{ padding: 0px!important;}
+    .allergy_finger_pick_block8 h2{
+        font-size: 50px;
+        line-height: 50px;
+    }
+    .allergy_finger_pick_block5_list1 h2 {
+        font-size: 50px;
+        line-height: 50px;
+    }
+
+    .allergy_finger_pick_block5 {
+        padding-top: 23px;
+        padding-bottom: 23px;
+    }
+    .allergy_finger_pick_block6_list1 h2 {
+        font-size: 50px;
+        line-height: 50px;
+    }
+    .allergy_finger_pick_block2_content h2 {
+        font-size: 50px;
+        line-height: 50px;
+    }
+    .allergy_finger_pick_block3_list2 h2 {
+        font-size: 50px;
+        line-height: 50px;
+    }
+    .allergy_finger_pick_block3_list1 h2 {
+        font-size: 50px;
+        line-height: 50px;
+    }
+
+    .allergy_finger_pick_block4_content h2 {
+        font-size: 50px;
+        line-height: 50px;
+    }
+    .allergy_finger_pick_block7_list2 h2 {
+        font-size: 50px;
+        line-height: 50px;
+    }
+    .allergy_finger_pick_block5_list2 h2{
+        font-size: 50px;
+        line-height: 50px;
+    }
+
     .footer_block_part2 .footer_block2_con2 ul li{ display:block; float:none; background:none; padding:5px 15px;}
 
     .footer_block_part2 .footer_block2_con2 .nav1{ padding:0!important;}
@@ -799,8 +1284,10 @@
     .allergen_bottom_block6 h2{ font-size: 32px;}
 }
 
-
 @media(max-width:400px){
+  /*  .allergy_banner_logo {
+        width: 90%;
+    }*/
 .allergen_banner_wrapper h4{ font-size: 33px;}
 .essential_banner_wrapper h4{ font-size: 33px;}
 

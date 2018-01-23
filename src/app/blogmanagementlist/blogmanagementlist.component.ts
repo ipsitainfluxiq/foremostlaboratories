@@ -158,7 +158,7 @@ export class BlogmanagementlistComponent implements OnInit {
         console.log(images);
         // console.log(JSON.parse(images));
         if (images == null || images=='') {
-            return '../../assets/images/logo.png';
+            return 'cogo.png';
         }
        /* if (images!=null && images !='' && images.indexOf('[') < 0) {
             return '../../assets/images/' + images;

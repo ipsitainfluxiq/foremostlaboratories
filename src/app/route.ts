@@ -21,7 +21,6 @@ import { BlogcategoryeditComponent } from './blogcategoryedit/blogcategoryedit.c
 import { BlogmanagementaddComponent } from './blogmanagementadd/blogmanagementadd.component';
 import { BlogmanagementlistComponent } from './blogmanagementlist/blogmanagementlist.component';
 import { BlogmanagementeditComponent } from './blogmanagementedit/blogmanagementedit.component';
-// import { AddvideomanagerComponent } from './addvideomanager/addvideomanager.component';
 import { VideomanageraddComponent } from './videomanageradd/videomanageradd.component';
 import { VideomanagerlistComponent } from './videomanagerlist/videomanagerlist.component';
 import { VideomanagereditComponent } from './videomanageredit/videomanageredit.component';
@@ -35,10 +34,17 @@ import { DashboardmessageaddComponent } from './dashboardmessageadd/dashboardmes
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AllblogsComponent } from './allblogs/allblogs.component';
 import { BlogpostdetailComponent } from './blogpostdetail/blogpostdetail.component';
+import { RepdetailinfoComponent } from './repdetailinfo/repdetailinfo.component';
+import { CancerScreeningComponent } from './cancer-screening/cancer-screening.component';
+import { FilemanageraddComponent } from './filemanageradd/filemanageradd.component';
+import {FilemanagerlistComponent} from "./filemanagerlist/filemanagerlist.component";
+import {FilemanagereditComponent} from "./filemanageredit/filemanageredit.component";
 
 
 const appRoutes: Routes = [
     { path: '', component: IndexComponent},
+    { path: 'home/:load', component: IndexComponent},
+    { path: 'home/:blankvalue/:scroll', component: IndexComponent},
     { path: 'quantitative_urine_analysis', component: QuantitativeUrineAnalysisComponent},
     { path: 'SubstanceMonitoringComponent', component: SubstanceMonitoringComponent},
     { path: 'pharmacogenetic', component: PharmacogeneticComponent},
@@ -52,6 +58,7 @@ const appRoutes: Routes = [
     { path: 'changepassword', component: ChangepasswordComponent},
     { path: 'forgetpassword', component: ForgetpasswordComponent},
     { path: 'accesscode', component: AccesscodeComponent},
+    { path: 'generatedcode/:code', component: AccesscodeComponent},
     { path: 'newpassword', component: NewpasswordComponent},
     { path: 'blogcategoryadd', component: BlogcategoryaddComponent},
     { path: 'blogcategorylist', component: BlogcategorylistComponent},
@@ -72,7 +79,12 @@ const appRoutes: Routes = [
     { path: 'dashboardmessageadd', component: DashboardmessageaddComponent},
     { path: 'dashboard', component: DashboardComponent},
     { path: 'allblogs', component: AllblogsComponent},
-    { path: 'blogpostdetail/:id', component: BlogpostdetailComponent}
+    { path: 'blogpostdetail/:id', component: BlogpostdetailComponent},
+    { path: 'repdetailinfo/:id/:type', component: RepdetailinfoComponent},
+    { path: 'cancerscreening', component: CancerScreeningComponent},
+    { path: 'filemanageradd', component: FilemanageraddComponent},
+    { path: 'filemanagerlist', component: FilemanagerlistComponent},
+    { path: 'filemanageredit/:id', component: FilemanagereditComponent}
 
 ];
 

@@ -76,6 +76,9 @@ export class BlogmanagementaddComponent implements OnInit {
         this.files.splice(counter,1);
         // alert(35);
     }
+    onHidden() {
+        this.issegmentmodalshown = false;
+    }
  /*   handleUpload(data: any): void // uploading the images and saving to particular folder
     {
         console.log('hi');
@@ -170,6 +173,7 @@ export class BlogmanagementaddComponent implements OnInit {
                 status: formval.status,
                 priority: formval.priority,
             };
+            console.log(data);
             this._http.post(link, data)
                 .subscribe(res => {
                     let result = res.json();

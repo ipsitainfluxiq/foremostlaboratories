@@ -35,7 +35,8 @@ export class VideomanageraddComponent implements OnInit {
     ngOnInit() {
         this.dataForm = this.fb.group({
             title: ['', Validators.required],
-            description: ['', Validators.required],
+         //   description: ['', Validators.required],
+            description: [''],
             videocategory: ['', Validators.required],
             videolink: ['', Validators.compose([Validators.required, VideomanageraddComponent.validateLink])],
         });

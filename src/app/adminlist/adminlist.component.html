@@ -4,7 +4,8 @@
   <div class="dashboard_right_wrapper">
     <div class="dashboard1_div1 table-responsive">
       <h4>Admin List</h4>
-
+      <div  *ngIf="datalist">
+        <div *ngIf="datalist.length>0">
       <div style=" padding-bottom: 10px; width: 100%;">
 
         <div class="adminserchdiv">
@@ -17,33 +18,39 @@
       </div>
       <div class="clearfix"></div>
 
-      <div class="tablediv">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <th>#</th>
-            <th>Name <b [ngClass]="getSortClass('first_name')" (click)="manageSorting('first_name')" >  |  </b></th>
-            <th>Email<b [ngClass]="getSortClass('personal_email')" (click)="manageSorting('personal_email')" >  |  </b></th>
-            <th>Phone<b [ngClass]="getSortClass('cellphone')" (click)="manageSorting('cellphone')" >  |  </b></th>
-            <th>Action</th>
-          </tr>
 
-          <tbody *ngFor="let item of datalist | orderBy:orderbyquery:orderbytype | usersearch:listFilter.value; let i = index">
-          <tr *ngIf=" i>=pagestart && i < pageinitation">
-            <td>{{i+1}}</td>
-            <td>{{item.first_name}} {{item.last_name}}</td>
-            <td>{{item.personal_email}}</td>
-            <td>{{item.cellphone}}</td>
-            <td class="atagsecondchild"><a [routerLink]="['/editadmin',item.id]">Edit</a>
-              <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" (click)="delConfirm(item.id)">Delete</a></td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+
+  <div class="tablediv">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th>#</th>
+        <th>Name <b [ngClass]="getSortClass('first_name')" (click)="manageSorting('first_name')" ></b></th>
+        <th>Email<b [ngClass]="getSortClass('personal_email')" (click)="manageSorting('personal_email')" ></b></th>
+        <th>Phone<b [ngClass]="getSortClass('cellphone')" (click)="manageSorting('cellphone')" ></b></th>
+        <th>Action</th>
+      </tr>
+
+      <tbody *ngFor="let item of datalist | orderBy:orderbyquery:orderbytype | usersearch:listFilter.value; let i = index">
+      <tr *ngIf=" i>=pagestart && i < pageinitation">
+        <td>{{i+1}}</td>
+        <td>{{item.first_name}} {{item.last_name}}</td>
+        <td>{{item.personal_email}}</td>
+        <td>{{item.cellphone}}</td>
+        <td class="atagsecondchild"><a [routerLink]="['/editadmin',item.id]">Edit</a>
+          <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" (click)="delConfirm(item.id)">Delete</a></td>
+      </tr>
+      </tbody>
+    </table>
   </div>
+</div>
+        <div *ngIf="datalist.length==0">
+          <h3 class="gotonextline">No Admins</h3>
+        </div>
+</div>
+</div>
 
-
-  <div class="pagination paginationdiv">
+<div *ngIf="datalist">
+  <div class="pagination paginationdiv" *ngIf="datalist.length>0">
     <ul class="pagination--items">
       <li class="pagination--item">
         <label>
@@ -72,7 +79,7 @@
     </ul>
     <div class="clearfix"></div>
   </div>
-
+</div>
 
 </div>
 

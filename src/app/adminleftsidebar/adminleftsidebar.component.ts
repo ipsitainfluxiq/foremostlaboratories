@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Http} from '@angular/http';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {CookieService} from 'angular2-cookie/core';
-
+declare var $: any;
 @Component({
   selector: 'app-adminleftsidebar',
   templateUrl: './adminleftsidebar.component.html',
@@ -13,7 +13,7 @@ export class AdminleftsidebarComponent implements OnInit {
     private cookiedetails;
     private addcookie1: CookieService;
     private usertype;
-    public name;
+   // public name;
 
     constructor(addcookie: CookieService, addcookie1: CookieService, private _http: Http, private router: Router) {
         this.addcookie = addcookie ;
@@ -26,8 +26,20 @@ export class AdminleftsidebarComponent implements OnInit {
             this.router.navigateByUrl('/');
         }
         else {
-            this.name = this.cookiedetails.first_name + ' ' + this.cookiedetails.last_name;
+          //  this.name = this.cookiedetails.first_name + ' ' + this.cookiedetails.last_name;
         }
+        /*dashboard_wrappertop*/
+
+        $(window).load(function() {
+            setInterval(() => {
+          //  alert($('.dashboard_wrappertop').height());
+           // alert($('.dashboard_right').height());
+            // var leftpanellength='';
+            var leftpanellength =$('.dashboard_right').height()+3;
+           // alert(leftpanellength);
+            $('.dashboard_left').height(leftpanellength);
+            }, 4000);
+        });
     }
 
     ngOnInit() {

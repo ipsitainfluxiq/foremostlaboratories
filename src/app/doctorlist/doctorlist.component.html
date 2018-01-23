@@ -1,5 +1,6 @@
 <app-adminheader></app-adminheader>
 <app-adminleftsidebar></app-adminleftsidebar>
+
 <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 dashboard_right">
   <div class="dashboard_right_wrapper">
     <div class="dashboard1_div1 table-responsive">
@@ -26,7 +27,8 @@
         <div class="clearfix"></div>
       </div>
       <div class="clearfix"></div>
-
+      <div  *ngIf="datalist">
+        <div *ngIf="datalist.length>0">
       <div class="tablediv">
 
 
@@ -60,6 +62,52 @@
         <!--  </div>-->
         </table>
       </div>
+        </div>
+        <div *ngIf="datalist.length==0">
+          <h3 class="gotonextline">No Doctor List</h3>
+        </div>
+      </div>
     </div>
   </div>
+
+
+
+
+
+
+  <div  *ngIf="datalist">
+    <div *ngIf="datalist.length>0">
+      <div class="pagination paginationdiv">
+        <ul class="pagination--items">
+          <li class="pagination--item">
+            <label>
+              Go to: </label>
+            <input type="text" [(ngModel)]="pageno" (blur)="pageval(3)">
+            <div class="clearfix"></div>
+
+          </li>
+          <li class="pagination--item">
+            <label>
+              Show rows:</label>
+            <select [(ngModel)]="showrows" (click)="chagevalues()">
+              <option>5</option>
+              <option>10</option>
+              <option>25</option>
+            </select>
+            <div class="clearfix"></div>
+
+          </li>
+          <li class="pagination--item" >  <label>Page {{pageno}} of {{totalpage}}</label></li>
+          <li class="pagination--item" >
+            <img src="../../assets/images/pageprev.png" alt="#" (click)="pageval(1)">
+
+            <img src="../../assets/images/pagenext.png" alt="#" (click)="pageval(2)">
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+
 </div>
+

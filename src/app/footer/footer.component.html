@@ -1,6 +1,5 @@
 
 <div class="container-fluid footer_block1">
-
   <div class="container">
     <div class="footer_block1_left">Subscribe to Our weekly newsletter</div>
     <div class="footer_block1_right">
@@ -11,13 +10,57 @@
     </div>
 
     <div class="clearfix"></div>
-
-
   </div>
-
 </div>
 
+<div  *ngIf="cookiedetails==0 || cookiedetails==null">
+<div class="container-fluid footer_block2 footer_block_part2">
+  <div class="container">
+    <div class="footer_block2_con1"> <a [routerLink]="['/']"><img src="../../assets/images/logo.png" alt="#"></a></div>
+    <div class="footer_block2_con2">
+      <ul>
+        <li class="nav1"><a href="javascript:void(0)">We test for</a></li>
+        <li> <a > Quantitative Urine Analysis (QUA)</a></li>
+        <li> <a  > Substance Monitoring</a></li>
+        <li> <a> The Pharmacogenetic Test </a></li>
+        <li> <a >  Essential Wellness Blood Test Panel </a></li>
+        <li> <a  > Allergy Finger Prick Test</a></li>
+        <li> <a> Cancer Screening</a></li>
+        <li> <a [routerLink]="['/login']" >Login</a></li>
+      </ul>
+      <div class="clearfix"></div>
+      <div class="footer_block2_con3"> Copyright &copy; 2017 Foremost Laboratories. All rights reserved.</div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+</div>
 
+<div  *ngIf="cookiedetails!=null">
+  <div class="container-fluid footer_block2">
+    <div class="container">
+      <div class="footer_block2_con1"> <a [routerLink]="['/']"><img src="../../assets/images/logo.png" alt="#"></a></div>
+      <div class="footer_block2_con2">
+        <ul>
+          <li><a [routerLink]="['/']"> Home </a></li>
+          <!--<li><a [routerLink]="['/']"> Get Hired</a></li>-->
+          <li> <a [routerLink]="['/quantitative_urine_analysis']"> Quantitative Urine Analysis (QUA)</a></li>
+          <li> <a [routerLink]="['/SubstanceMonitoringComponent']"> Substance Monitoring</a></li>
+          <li> <a [routerLink]="['/pharmacogenetic']"> The Pharmacogenetic Test </a></li>
+          <li> <a [routerLink]="['/essential_wellness']">  Essential Wellness Blood Test Panel </a></li>
+          <li> <a [routerLink]="['/allergy_finger_prick_test']" > Allergy Finger Prick Test</a></li>
+          <li> <a [routerLink]="['/cancerscreening']"> Cancer Screening</a></li>
+          <li> <a [routerLink]="['/dashboard']" >Dashboard</a></li>
+          <li> <a [routerLink]="['/logout']" (click)="logout()">Logout</a></li>
+        </ul>
+      </div>
+      <div class="footer_block2_con3"> Copyright &copy; 2017 Foremost Laboratories. All rights reserved.</div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+
+<!--
 <div class="container-fluid footer_block2">
   <div class="container">
     <div class="footer_block2_con1"> <a [routerLink]="['/']"><img src="../../assets/images/logo.png" alt="#"></a></div>
@@ -30,10 +73,13 @@
         <li> <a [routerLink]="['/pharmacogenetic']"> The Pharmacogenetic Test </a></li>
         <li> <a [routerLink]="['/essential_wellness']">  Essential Wellness Blood Test Panel </a></li>
         <li> <a [routerLink]="['/allergen_immunotherapy']">   Allergen Immunotherapy    </a></li>
-        <li> <a [routerLink]="['/login']" >Login</a></li>
+        <li *ngIf="cookiedetails==0 || cookiedetails==null"> <a [routerLink]="['/login']" >Login</a></li>
+        <li *ngIf="cookiedetails!=null"> <a [routerLink]="['/dashboard']" >Dashboard</a></li>
+        <li *ngIf="cookiedetails!=null"> <a [routerLink]="['/logout']" (click)="logout()">Logout</a></li>
       </ul>
     </div>
     <div class="footer_block2_con3"> Copyright &copy; 2017 Foremost Laboratories. All rights reserved.</div>
     <div class="clearfix"></div>
   </div>
 </div>
+-->

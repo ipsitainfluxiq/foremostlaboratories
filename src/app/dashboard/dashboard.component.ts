@@ -32,8 +32,8 @@ export class DashboardComponent implements OnInit {
       this.serverurl = _commonservices.url;
       this.cookiedetails = this.addcookie.getObject('cookiedetails');
       console.log('? ' + this.usertype);
-      this.orderbyquery = 'datetimestamp';
-      this.orderbyquery = 'title';
+      this.orderbyquery = 'priority';
+     // this.orderbyquery = 'title';
       this.orderbydocquery = 'firstname';
       this.orderbyrepquery = 'first_name';
   }
@@ -59,7 +59,7 @@ export class DashboardComponent implements OnInit {
     }
 
     getblogmanagementlist() {
-        let link = this.serverurl + 'blogmanagementlist';
+        let link = this.serverurl + 'blogmanagementlist_activeonly';
         this._http.get(link)
             .subscribe(res => {
                 let result = res.json();

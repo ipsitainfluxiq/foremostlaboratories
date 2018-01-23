@@ -1,5 +1,9 @@
 <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 dashboard_left">
-    <h2>Welcome {{name}}</h2>
+   <!-- <h2>Welcome <p class="firstlettercapitalization">{{name}}</p></h2>-->
+    <h2><p class="gotonextline">Welcome</p>
+      <div class="wrappermarginadd">  <p class="firstlettercapitalization marginadd">{{cookiedetails.first_name }}</p>
+        <p class="firstlettercapitalization">{{cookiedetails.last_name}}</p>
+      </div></h2>
 
 
                                             <!--    usertype == 1     (ADMIN)             -->
@@ -9,16 +13,8 @@
 
     <ul>
 
-        <!-- <li><a [routerLink]="['/dashboard']">DashBoard</a>
-    </li>-->
-
-        <!--<li><a>Dashboard Management</a>
-            <ul>
-                <li><a [routerLink]="['/dashboard']">Dashboard</a></li>
-                <li *ngIf="usertype==1"><a [routerLink]="['/dashboardmessageadd']">Manage Welcome Message </a></li>
-            </ul>
-        </li>-->
         <li><a [routerLink]="['/dashboard']">Dashboard</a></li>
+        <li  *ngIf="usertype==0"><a [routerLink]="['/repdetailinfo',cookiedetails.id,0]">My Profile</a></li>
         <li *ngIf="usertype==1"><a [routerLink]="['/dashboardmessageadd']">Manage Welcome Message </a></li>
         <li *ngIf="usertype==1"><a>Admin Management</a>
             <ul>
@@ -31,7 +27,7 @@
 
         <li *ngIf="usertype==1"><a>Blog Category Management</a>
             <ul>
-                <li><a [routerLink]="['/blogcategoryadd']">Add Blog Category</a></li>
+                <li><a [routerLink]="['/blogcategoryadd']">Add Category</a></li>
                 <li><a [routerLink]="['/blogcategorylist']">Blog Category List</a></li>
             </ul>
         </li>
@@ -40,7 +36,7 @@
 
         <li *ngIf="usertype==1"><a>Blog Management</a>
             <ul>
-                <li><a [routerLink]="['/blogmanagementadd']">Add Blog Management</a></li>
+                <li><a [routerLink]="['/blogmanagementadd']">Add Blog</a></li>
                 <li><a [routerLink]="['/blogmanagementlist']">Blog Management List</a></li>
             </ul>
         </li>
@@ -56,15 +52,13 @@
 
         <li *ngIf="usertype==1"><a>Manage Representative</a>
             <ul>
-                <!-- <li><a [routerLink]="['/postmanagement']">Add Doctor</a></li>-->
                 <li><a [routerLink]="['/representativelist']">Representative List</a></li>
             </ul>
         </li>
 
         <li><a [routerLink]="['/changepassword']">Change Password</a></li>
-        <li><a (click)="logout()">Log out</a></li>
-
-
+        <li *ngIf="usertype==1"><a [routerLink]="['/']">Home</a></li>
+        <li><a class="logoutclass" (click)="logout()">Log out</a></li>
 
     </ul>
 </div>
